@@ -20,9 +20,4 @@ Projelerin geliştirilmesinde genel olarak şu teknolojiler kullanılmaktadır:
 - **Python**: Karmaşık mantık, veri işleme ve araç geliştirme.
 - **Bash**: Otomasyon, sistem yönetimi ve hızlı betikleme.
 
-## 👤 İletişim
 
-Sorularınız veya iş birliği için benimle iletişime geçebilirsiniz.
-
-- **GitHub:** [@mehmeteminyilmaz](https://github.com/mehmeteminyilmaz)
-- **Repo Linki:** [github.com/mehmeteminyilmaz/cybersec](https://github.com/mehmeteminyilmaz/cybersec)
