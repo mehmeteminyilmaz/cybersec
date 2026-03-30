@@ -8,7 +8,7 @@ Bu depo, ağ tarama, trafik analizi ve güvenlik testleri gibi farklı alt alanl
 
 Aşağıdaki projeler ilerleyen süreçte depoya eklenecektir:
 
-- `port-scanner/` - Belirli IP aralıklarındaki açık portları tespit eden araç.
+- `port-scanner/` - Belirli IP aralıklarındaki açık portları tespit eden araç. **(Tamamlandı)**
 - `network-sniffer/` - Ağ trafiğini yakalayan ve analiz eden betik.
 - `vulnerability-scanner/` - Temel güvenlik açıklarını kontrol eden otomasyonlar.
 - `...` - Yeni araçlar eklendikçe burası güncellenecektir.
