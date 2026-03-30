@@ -22,16 +22,16 @@
             <nav class="sidebar-nav">
                 <ul>
                     <li class="nav-item active" data-page="dashboard">
-                        <a href="#"><i class="fas fa-th-large"></i> <span>Overview</span></a>
+                        <a href="#"><i class="fas fa-th-large"></i> <span>Genel Bakış</span></a>
                     </li>
                     <li class="nav-item" data-page="port-scanner">
-                        <a href="#"><i class="fas fa-search"></i> <span>Port Scanner</span></a>
+                        <a href="#"><i class="fas fa-search"></i> <span>Port Tarayıcı</span></a>
                     </li>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-network-wired"></i> <span>Sniffer (Soon)</span></a>
+                        <a href="#"><i class="fas fa-network-wired"></i> <span>Ağ Dinleyici (Yakında)</span></a>
                     </li>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-shield-alt"></i> <span>Vuln Scan (Soon)</span></a>
+                        <a href="#"><i class="fas fa-shield-alt"></i> <span>Zafiyet Tarama (Yakında)</span></a>
                     </li>
                 </ul>
             </nav>
@@ -47,11 +47,11 @@
         <main class="content">
             <header class="content-header">
                 <div class="breadcrumb">
-                    <span id="current-page">Dashboard</span>
+                    <span id="current-page">Genel Bakış</span>
                 </div>
                 <div class="header-actions">
                     <div class="ip-info">
-                        Local IP: <span id="local-ip">Checking...</span>
+                        Yerel IP: <span id="local-ip">Kontrol ediliyor...</span>
                     </div>
                 </div>
             </header>
@@ -59,88 +59,88 @@
             <!-- DASHBOARD OVERVIEW PAGE -->
             <div id="page-dashboard" class="page-content">
                 <div class="welcome-section">
-                    <h2>Welcome to <span class="highlight">CyberPanel</span></h2>
-                    <p>Centralized security tool management for ethical hackers.</p>
+                    <h2><span class="highlight">CyberPanel</span>'e Hoş Geldiniz</h2>
+                    <p>Etik hackerlar için merkezi güvenlik aracı yönetim platformu.</p>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-card glass">
                         <i class="fas fa-terminal"></i>
-                        <h4>Tools Ready</h4>
+                        <h4>Hazır Araçlar</h4>
                         <p class="stat-value">1 / 4</p>
                     </div>
                     <div class="stat-card glass">
                         <i class="fas fa-history"></i>
-                        <h4>Last Scan</h4>
-                        <p id="last-scan-time" class="stat-value">N/A</p>
+                        <h4>Son Tarama</h4>
+                        <p id="last-scan-time" class="stat-value">Yok</p>
                     </div>
                     <div class="stat-card glass">
                         <i class="fas fa-bug"></i>
-                        <h4>Threat Level</h4>
-                        <p class="stat-value green">LOW</p>
+                        <h4>Tehdit Seviyesi</h4>
+                        <p class="stat-value green">DÜŞÜK</p>
                     </div>
                 </div>
                 <div class="action-card glass">
-                    <h3>Quick Start</h3>
-                    <p>Ready to secure? Start by scanning your network infrastructure.</p>
-                    <button class="btn-primary" onclick="switchPage('port-scanner')">Launch Port Scanner</button>
+                    <h3>Hızlı Başlangıç</h3>
+                    <p>Güvenliği sağlamaya hazır mısınız? Ağ altyapınızı tarayarak başlayın.</p>
+                    <button class="btn-primary" onclick="switchPage('port-scanner')">Port Tarayıcıyı Başlat</button>
                 </div>
             </div>
 
-            <!-- PORT SCANNER PAGE -->
+            <!-- PORT TARAYICI SAYFASI -->
             <div id="page-port-scanner" class="page-content hidden">
                 <section class="scan-config">
                     <div class="card glass">
-                        <h3>Scanner Configuration</h3>
+                        <h3>Tarayıcı Ayarları</h3>
                         <div class="form-group">
-                            <label for="target">Target Host (IP or Domain)</label>
-                            <input type="text" id="target" placeholder="e.g. scanme.nmap.org" value="scanme.nmap.org">
+                            <label for="target">Hedef Host (IP veya Domain)</label>
+                            <input type="text" id="target" placeholder="Örn: scanme.nmap.org" value="scanme.nmap.org">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="start_port">Start Port</label>
+                                <label for="start_port">Başlangıç Portu</label>
                                 <input type="number" id="start_port" value="1">
                             </div>
                             <div class="form-group">
-                                <label for="end_port">End Port</label>
+                                <label for="end_port">Bitiş Portu</label>
                                 <input type="number" id="end_port" value="1024">
                             </div>
                             <div class="form-group">
-                                <label for="threads">Threads</label>
+                                <label for="threads">İş Parçacığı (Threads)</label>
                                 <input type="number" id="threads" value="100">
                             </div>
                         </div>
-                        <button id="scan-btn" class="btn-primary">START SCAN</button>
+                        <button id="scan-btn" class="btn-primary">TARAMAYI BAŞLAT</button>
                     </div>
                 </section>
 
                 <section class="results-area">
                     <div class="card glass result-box">
                         <div class="result-header">
-                            <h3>Scan Results</h3>
+                            <h3>Tarama Sonuçları</h3>
                             <div id="target-info" class="hidden">
-                                Target: <span id="res-target">---</span> | IP: <span id="res-ip">---</span>
+                                Hedef: <span id="res-target">---</span> | IP: <span id="res-ip">---</span>
                             </div>
                         </div>
                         <div id="loading" class="hidden">
                             <div class="scanner-line"></div>
-                            <p>Scanning in progress...</p>
+                            <p>Tarama devam ediyor...</p>
                         </div>
                         <div class="table-container">
                             <table id="results-table">
                                 <thead>
                                     <tr>
                                         <th>Port</th>
-                                        <th>Service</th>
-                                        <th>Status</th>
+                                        <th>Servis</th>
+                                        <th>Durum</th>
                                     </tr>
                                 </thead>
                                 <tbody id="results-body">
-                                    <!-- Results will be added here -->
+                                    <!-- Sonuçlar buraya eklenecek -->
                                 </tbody>
                             </table>
                         </div>
                         <div id="summary" class="hidden">
-                            <p id="res-summary">Found 0 open ports.</p>
+                            <p id="res-summary">0 açık port bulundu.</p>
                         </div>
                     </div>
                 </section>
@@ -182,12 +182,12 @@
             const targetInfo = document.getElementById('target-info');
 
             if (!target) {
-                alert('Please enter a target!');
+                alert('Lütfen bir hedef girin!');
                 return;
             }
 
             btn.disabled = true;
-            btn.innerText = 'SCANNING...';
+            btn.innerText = 'TARANIYOR...';
             loading.classList.remove('hidden');
             resultsBody.innerHTML = '';
             summary.classList.add('hidden');
@@ -205,35 +205,35 @@
                 if (response.ok) {
                     document.getElementById('res-target').innerText = data.target;
                     document.getElementById('res-ip').innerText = data.ip;
-                    document.getElementById('res-summary').innerText = `Scan complete. Found ${data.count} open ports.`;
+                    document.getElementById('res-summary').innerText = `Tarama tamamlandı. ${data.count} açık port bulundu.`;
                     
                     targetInfo.classList.remove('hidden');
                     summary.classList.remove('hidden');
                     document.getElementById('last-scan-time').innerText = data.timestamp;
 
                     if (data.results.length === 0) {
-                        resultsBody.innerHTML = '<tr><td colspan="3" class="no-ports">No open ports found.</td></tr>';
+                        resultsBody.innerHTML = '<tr><td colspan="3" class="no-ports">Açık port bulunamadı.</td></tr>';
                     } else {
                         data.results.forEach(res => {
                             const row = `
                                 <tr>
                                     <td>${res.port}</td>
                                     <td>${res.service}</td>
-                                    <td class="status-open">${res.status}</td>
+                                    <td class="status-open">AÇIK</td>
                                 </tr>
                             `;
                             resultsBody.innerHTML += row;
                         });
                     }
                 } else {
-                    alert('Error: ' + data.error);
+                    alert('Hata: ' + data.error);
                 }
             } catch (error) {
                 console.error(error);
-                alert('An error occurred during scan.');
+                alert('Tarama sırasında bir hata oluştu.');
             } finally {
                 btn.disabled = false;
-                btn.innerText = 'START SCAN';
+                btn.innerText = 'TARAMAYI BAŞLAT';
                 loading.classList.add('hidden');
             }
         });

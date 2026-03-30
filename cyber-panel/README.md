@@ -1,21 +1,21 @@
-# 🛡️ CyberScan: Web Port Scanner Dashboard
+# 🛡️ CyberScan: CyberPanel Merkezi Güvenlik Paneli
 
-Modern, hızlı ve görselleştirilmiş port tarama aracı. Bu proje, terminal tabanlı port tarayıcısını şık bir web arayüzüne taşır.
+Modern, hızlı ve görselleştirilmiş merkezi güvenlik kontrol merkezi. Bu proje, tüm siber güvenlik araçlarınızı tek bir şık web arayüzünde birleştirir.
 
-![Dashboard Preview](assets/dashboard_preview.png)
+![CyberPanel Preview](assets/cyberpanel_tr_preview.png)
 
 ## ✨ Özellikler
 
-- **Modern Arayüz:** Cyberpunk temalı, karanlık mod ve neon geçişli tasarım.
-- **Yüksek Performans:** Python `threading` kütüphanesi ile aynı anda 100+ portu saniyeler içinde tarar.
-- **Canlı Geri Bildirim:** Tarama sırasında görsel animasyonlar ve sonuç tablosu.
-- **Servis Tanıma:** Yaygın portları (HTTP, SSH, FTP, MySQL vb.) otomatik olarak tanımlar.
+- **Merkezi Yönetim:** Tüm siber güvenlik modüllerine (Port Tarayıcı, Sniffer vb.) tek tıkla erişim.
+- **Modern Arayüz:** Cyberpunk temalı, karanlık mod, yan menü (sidebar) ve görsel animasyonlar.
+- **Yüksek Performans:** Python `threading` ve Flask API ile hızlı veri işleme.
+- **Canlı Geri Bildirim:** Tarama sonuçları sayfa yenilenmeden anlık olarak tabloda listelenir.
 
 ## 🛠️ Teknolojiler
 
-- **Backend:** Python, Flask
+- **Backend:** Python, Flask (API)
 - **Frontend:** HTML5, CSS3 (Glassmorphism), JavaScript (Fetch API)
-- **Güvenlik:** Socket programlama
+- **Güvenlik:** Socket programlama, Multi-threading
 
 ## 🚀 Kurulum ve Kullanım
 
@@ -32,11 +32,11 @@ Modern, hızlı ve görselleştirilmiş port tarama aracı. Bu proje, terminal t
 3. **Erişim:**
    Tarayıcınızdan `http://127.0.0.1:5000` adresine gidin.
 
-## 📸 Ekran Görüntüsü (Test Sonucu)
+## 📸 Ekran Görüntüsü (Port Tarayıcı Testi)
 
-Aşağıdaki görsel, `scanme.nmap.org` adresi üzerinde yapılan başarılı bir tarama testini göstermektedir. Sistem açık olan **Port 22 (SSH)** servisini doğru bir şekilde tespit etmiştir.
+Aşağıdaki görsel, yeni Türkçe arayüz üzerinden yapılan başarılı bir port tarama testini göstermektedir. Sistem açık olan **Port 22 (SSH)** ve **Port 80 (HTTP)** servislerini başarıyla tespit etmiştir.
 
-![Scan Results](assets/dashboard_preview.png)
+![Port Scanner Results](assets/port_scanner_tr_preview.png)
 
 ---
 Geliştiren: [mehmeteminyilmaz](https://github.com/mehmeteminyilmaz)

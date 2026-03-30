@@ -49,12 +49,12 @@ def api_scan():
     threads = int(data.get('threads', 100))
 
     if not target:
-        return jsonify({"error": "Target required."}), 400
+        return jsonify({"error": "Hedef belirtilmelidir."}), 400
 
     try:
         ip = socket.gethostbyname(target)
     except socket.gaierror:
-        return jsonify({"error": "Host not found."}), 404
+        return jsonify({"error": "Sunucu (Host) bulunamadı."}), 404
 
     open_ports = []
     ports = range(start_port, end_port + 1)

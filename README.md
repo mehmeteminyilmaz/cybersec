@@ -2,20 +2,20 @@
 
 Siber güvenlik alanında geliştirdiğim araçları ve bu araçları yöneten merkezi **CyberPanel** dashboard'unu barındıran profesyonel bir monorepo.
 
-![CyberPanel Banner](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
+![CyberPanel Banner](https://img.shields.io/badge/Durum-Aktif-brightgreen?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)
 ![Flask](https://img.shields.io/badge/Flask-Web-lightgrey?style=for-the-badge&logo=flask)
 
-![CyberPanel Preview](cyber-panel/assets/cyberpanel_preview.png)
+![CyberPanel Preview](cyber-panel/assets/cyberpanel_tr_preview.png)
 
 ---
 
 ## 🖥️ CyberPanel Dashboard
 
-**CyberPanel**, siber güvenlik araçlarını tek bir merkezden yönetmek için tasarlanmış modern bir Web UI platformudur. Terminal araçlarının gücünü, şık bir kullanıcı arayüzü ile birleştirir.
+**CyberPanel**, siber güvenlik araçlarını tek bir merkezden yönetmek için tasarlanmış modern bir Web kullanıcı arayüzü platformudur. Terminal araçlarının gücünü, şık ve kullanımı kolay bir arayüz ile birleştirir.
 
 - **Merkezi Yönetim:** Port scanner, sniffer ve diğer tüm araçlara tek tıkla erişim.
-- **Modern UI:** Yan menü (Sidebar), gerçek zamanlı istatistikler ve Cyberpunk teması.
+- **Modern Arayüz:** Yan menü (Sidebar), gerçek zamanlı istatistikler ve Cyberpunk teması.
 - **Canlı Veri:** Tarama ve analiz sonuçlarının anlık olarak görselleştirilmesi.
 
 ---
@@ -25,11 +25,11 @@ Siber güvenlik alanında geliştirdiğim araçları ve bu araçları yöneten m
 | Araç | Açıklama | Durum |
 | :--- | :--- | :--- |
 | **CyberPanel** | Merkezi Yönetim Paneli (Web UI) | ✅ Tamamlandı |
-| **Port Scanner** | Çok thread'li, hızlı port tespiti | ✅ Tamamlandı |
-| **Network Sniffer** | Trafik analizi ve paket yakalama | ⏳ Beklemede |
-| **Vuln Scanner** | Temel zafiyet tarama otomasyonu | ⏳ Beklemede |
+| **Port Tarayıcı** | Çok thread'li, hızlı port tespiti | ✅ Tamamlandı |
+| **Ağ Dinleyici** | Trafik analizi ve paket yakalama | ⏳ Beklemede |
+| **Zafiyet Tarama** | Temel zafiyet tarama otomasyonu | ⏳ Beklemede |
 
-### Klasörler:
+### Klasör Yapısı:
 - `cyber-panel/`: Flask tabanlı merkezi yönetim arayüzü ve API.
 - `port-scanner/`: Bağımsız terminal tabanlı port tarama betiği.
 
