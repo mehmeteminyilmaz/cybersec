@@ -5,7 +5,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# Yaygın port isimleri
+# --- CONFIG & CONSTANTS ---
 PORT_NAMES = {
     21: "FTP", 22: "SSH", 23: "Telnet", 25: "SMTP",
     53: "DNS", 80: "HTTP", 110: "POP3", 143: "IMAP",
@@ -14,6 +14,7 @@ PORT_NAMES = {
     8443: "HTTPS-Alt", 27017: "MongoDB"
 }
 
+# --- HELPERS ---
 def scan_port(host, port, timeout=1):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -27,12 +28,20 @@ def scan_port(host, port, timeout=1):
 def get_service(port):
     return PORT_NAMES.get(port, "Unknown Service")
 
+# --- ROUTES ---
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # Dashboard ana sayfası (Overview)
+    return render_template('index.html', active_page='dashboard')
 
-@app.route('/scan', methods=['POST'])
-def scan():
+@app.route('/port-scanner')
+def port_scanner():
+    # Port Scanner sayfası
+    return render_template('index.html', active_page='port-scanner')
+
+# --- API ENDPOINTS ---
+@app.route('/api/scan', methods=['POST'])
+def api_scan():
     data = request.json
     target = data.get('target')
     start_port = int(data.get('start_port', 1))
@@ -40,12 +49,12 @@ def scan():
     threads = int(data.get('threads', 100))
 
     if not target:
-        return jsonify({"error": "Hedef IP/Domain girilmelidir."}), 400
+        return jsonify({"error": "Target required."}), 400
 
     try:
         ip = socket.gethostbyname(target)
     except socket.gaierror:
-        return jsonify({"error": "Host bulunamadı."}), 404
+        return jsonify({"error": "Host not found."}), 404
 
     open_ports = []
     ports = range(start_port, end_port + 1)
@@ -62,7 +71,6 @@ def scan():
                     "status": "OPEN"
                 })
 
-    # Sonuçları port numarasına göre sırala
     open_ports.sort(key=lambda x: x['port'])
 
     return jsonify({

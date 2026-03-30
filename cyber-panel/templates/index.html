@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPanel | Central Security Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <h1>CYBER<span>PANEL</span></h1>
+                    <p>v1.0.0 Alpha</p>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-page="dashboard">
+                        <a href="#"><i class="fas fa-th-large"></i> <span>Overview</span></a>
+                    </li>
+                    <li class="nav-item" data-page="port-scanner">
+                        <a href="#"><i class="fas fa-search"></i> <span>Port Scanner</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-network-wired"></i> <span>Sniffer (Soon)</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-shield-alt"></i> <span>Vuln Scan (Soon)</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-status">
+                    <div class="status-dot online"></div>
+                    <span>System Online</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <header class="content-header">
+                <div class="breadcrumb">
+                    <span id="current-page">Dashboard</span>
+                </div>
+                <div class="header-actions">
+                    <div class="ip-info">
+                        Local IP: <span id="local-ip">Checking...</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- DASHBOARD OVERVIEW PAGE -->
+            <div id="page-dashboard" class="page-content">
+                <div class="welcome-section">
+                    <h2>Welcome to <span class="highlight">CyberPanel</span></h2>
+                    <p>Centralized security tool management for ethical hackers.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card glass">
+                        <i class="fas fa-terminal"></i>
+                        <h4>Tools Ready</h4>
+                        <p class="stat-value">1 / 4</p>
+                    </div>
+                    <div class="stat-card glass">
+                        <i class="fas fa-history"></i>
+                        <h4>Last Scan</h4>
+                        <p id="last-scan-time" class="stat-value">N/A</p>
+                    </div>
+                    <div class="stat-card glass">
+                        <i class="fas fa-bug"></i>
+                        <h4>Threat Level</h4>
+                        <p class="stat-value green">LOW</p>
+                    </div>
+                </div>
+                <div class="action-card glass">
+                    <h3>Quick Start</h3>
+                    <p>Ready to secure? Start by scanning your network infrastructure.</p>
+                    <button class="btn-primary" onclick="switchPage('port-scanner')">Launch Port Scanner</button>
+                </div>
+            </div>
+
+            <!-- PORT SCANNER PAGE -->
+            <div id="page-port-scanner" class="page-content hidden">
+                <section class="scan-config">
+                    <div class="card glass">
+                        <h3>Scanner Configuration</h3>
+                        <div class="form-group">
+                            <label for="target">Target Host (IP or Domain)</label>
+                            <input type="text" id="target" placeholder="e.g. scanme.nmap.org" value="scanme.nmap.org">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="start_port">Start Port</label>
+                                <input type="number" id="start_port" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="end_port">End Port</label>
+                                <input type="number" id="end_port" value="1024">
+                            </div>
+                            <div class="form-group">
+                                <label for="threads">Threads</label>
+                                <input type="number" id="threads" value="100">
+                            </div>
+                        </div>
+                        <button id="scan-btn" class="btn-primary">START SCAN</button>
+                    </div>
+                </section>
+
+                <section class="results-area">
+                    <div class="card glass result-box">
+                        <div class="result-header">
+                            <h3>Scan Results</h3>
+                            <div id="target-info" class="hidden">
+                                Target: <span id="res-target">---</span> | IP: <span id="res-ip">---</span>
+                            </div>
+                        </div>
+                        <div id="loading" class="hidden">
+                            <div class="scanner-line"></div>
+                            <p>Scanning in progress...</p>
+                        </div>
+                        <div class="table-container">
+                            <table id="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>Port</th>
+                                        <th>Service</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results-body">
+                                    <!-- Results will be added here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="summary" class="hidden">
+                            <p id="res-summary">Found 0 open ports.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Page Switching Logic
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+            document.getElementById('current-page').innerText = pageId.replace('-', ' ').toUpperCase();
+        }
+
+        document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {
+            item.addEventListener('click', () => {
+                switchPage(item.getAttribute('data-page'));
+            });
+        });
+
+        // Local IP Display (Mock)
+        document.getElementById('local-ip').innerText = "127.0.0.1";
+
+        // Scanner Logic
+        document.getElementById('scan-btn').addEventListener('click', async () => {
+            const target = document.getElementById('target').value;
+            const start_port = document.getElementById('start_port').value;
+            const end_port = document.getElementById('end_port').value;
+            const threads = document.getElementById('threads').value;
+            
+            const btn = document.getElementById('scan-btn');
+            const loading = document.getElementById('loading');
+            const resultsBody = document.getElementById('results-body');
+            const summary = document.getElementById('summary');
+            const targetInfo = document.getElementById('target-info');
+
+            if (!target) {
+                alert('Please enter a target!');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = 'SCANNING...';
+            loading.classList.remove('hidden');
+            resultsBody.innerHTML = '';
+            summary.classList.add('hidden');
+            targetInfo.classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target, start_port, end_port, threads })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('res-target').innerText = data.target;
+                    document.getElementById('res-ip').innerText = data.ip;
+                    document.getElementById('res-summary').innerText = `Scan complete. Found ${data.count} open ports.`;
+                    
+                    targetInfo.classList.remove('hidden');
+                    summary.classList.remove('hidden');
+                    document.getElementById('last-scan-time').innerText = data.timestamp;
+
+                    if (data.results.length === 0) {
+                        resultsBody.innerHTML = '<tr><td colspan="3" class="no-ports">No open ports found.</td></tr>';
+                    } else {
+                        data.results.forEach(res => {
+                            const row = `
+                                <tr>
+                                    <td>${res.port}</td>
+                                    <td>${res.service}</td>
+                                    <td class="status-open">${res.status}</td>
+                                </tr>
+                            `;
+                            resultsBody.innerHTML += row;
+                        });
+                    }
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                console.error(error);
+                alert('An error occurred during scan.');
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'START SCAN';
+                loading.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
