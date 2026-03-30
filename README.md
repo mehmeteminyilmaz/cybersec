@@ -8,7 +8,8 @@ Bu depo, ağ tarama, trafik analizi ve güvenlik testleri gibi farklı alt alanl
 
 Aşağıdaki projeler ilerleyen süreçte depoya eklenecektir:
 
-- `port-scanner/` - Belirli IP aralıklarındaki açık portları tespit eden araç. **(Tamamlandı)**
+- `port-scanner/` - Terminal tabanlı hızlı port tarama aracı. **(Tamamlandı)**
+- `web-scanner/` - Flask tabanlı, modern web arayüzlü port tarama dashboard'u. **(Tamamlandı)**
 - `network-sniffer/` - Ağ trafiğini yakalayan ve analiz eden betik.
 - `vulnerability-scanner/` - Temel güvenlik açıklarını kontrol eden otomasyonlar.
 - `...` - Yeni araçlar eklendikçe burası güncellenecektir.
@@ -17,7 +18,8 @@ Aşağıdaki projeler ilerleyen süreçte depoya eklenecektir:
 
 Projelerin geliştirilmesinde genel olarak şu teknolojiler kullanılmaktadır:
 
-- **Python**: Karmaşık mantık, veri işleme ve araç geliştirme.
-- **Bash**: Otomasyon, sistem yönetimi ve hızlı betikleme.
+- **Python**: Flask ile backend API geliştirme ve araç mantığı.
+- **HTML/CSS/JS**: Modern ve duyarlı (responsive) siber güvenlik arayüzleri.
+- **Bash**: Otomasyon ve sistem yönetimi.
 
 
