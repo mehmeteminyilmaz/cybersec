@@ -18,6 +18,19 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
@@ -43,7 +56,7 @@ body {
 
 .sidebar-header {
     padding: 2rem 1.5rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: none;
 }
 
 .logo h1 {
