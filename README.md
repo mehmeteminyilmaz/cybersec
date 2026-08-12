@@ -1,5 +1,6 @@
 # 🛡️ CyberSec Monorepo & CyberPanel Pro
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-cybersec--panel.vercel.app-238636?style=for-the-badge&logo=vercel&logoColor=white)](https://cybersec-panel.vercel.app)
 [![CI Build](https://github.com/mehmeteminyilmaz/cybersec/actions/workflows/ci.yml/badge.svg)](https://github.com/mehmeteminyilmaz/cybersec/actions)
 ![Python Version](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-3.0+-000000?style=for-the-badge&logo=flask&logoColor=white)
@@ -8,6 +9,8 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 Siber güvenlik araçlarını ve analiz modüllerini tek bir profesyonel merkezden yönetmek için tasarlanmış kurumsal seviyede **CyberSec Suite & CyberPanel Web UI** monoreposu.
+
+👉 **Canlı Uygulama (Live Demo):** [https://cybersec-panel.vercel.app](https://cybersec-panel.vercel.app)
 
 ---
 
@@ -19,7 +22,7 @@ Siber güvenlik araçlarını ve analiz modüllerini tek bir profesyonel merkezd
 - 🚀 **Çok İzlekli Port Tarayıcı (v2.0 Pro):** TCP Full-Connect tarama, Banner Grabbing (Servis Versiyon Tespiti) ve TTL Tabanlı İşletim Sistemi (OS Fingerprinting) tespiti.
 - 🎨 **Mat & Kurumsal Dark UI:** Göz yormayan, sade ve GitHub/Linear tarzı profesyonel karanlık tema (Plus Jakarta Sans & JetBrains Mono fontları).
 - 🧪 **Tam Test & Üretim Desteği:** Pytest ile otomatik birim testleri, Dockerfile desteği ve GitHub Actions CI/CD entegrasyonu.
-- 🌐 **Bulut Dağıtımına Hazır:** Render, Vercel (`vercel.json`), Railway ve Gunicorn konfigürasyonları hazır.
+- 🌐 **Bulut Dağıtımına Hazır:** Vercel (`vercel.json`), Render, Railway ve Gunicorn konfigürasyonları hazır.
 
 ---
 
@@ -85,11 +88,10 @@ docker run -p 5000:5000 cyberpanel
 
 ---
 
-## 🌐 Canlıya Yayınlama (Production Deployment)
+## 🌐 Canlı Yayın (Live Deployment)
 
-Projede canlı dağıtım konfigürasyonları hazır olarak sunulmuştur:
-- **Render.com:** Root Directory: `cyber-panel`, Start Command: `gunicorn app:app`
-- **Vercel:** `vercel.json` otomatik algılanır.
+Canlı Uygulama Vercel üzerinde aktiftir:
+- 🌐 **Vercel Live URL:** [https://cybersec-panel.vercel.app](https://cybersec-panel.vercel.app)
 
 ---
 
