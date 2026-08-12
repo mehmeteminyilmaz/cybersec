@@ -3,153 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberPanel | Central Security Dashboard</title>
+    <title>CyberPanel | Next-Gen Security Suite</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Ambient Background Lighting -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
     <div class="app-container">
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <div class="logo">
-                    <h1>CYBER<span>PANEL</span></h1>
-                    <span class="version-badge">v1.0.0</span>
+                <div class="brand">
+                    <div class="brand-icon">
+                        <i class="fas fa-shield-cat"></i>
+                    </div>
+                    <div class="brand-text">
+                        <h2>Cyber<span>Sec</span></h2>
+                        <span class="version-tag">PRO PLATFORM</span>
+                    </div>
                 </div>
             </div>
+
             <nav class="sidebar-nav">
+                <div class="nav-section-title">NAVİGASYON</div>
                 <ul>
                     <li class="nav-item active" data-page="dashboard">
-                        <a href="#"><i class="fas fa-chart-line"></i> <span>Genel Bakış</span></a>
+                        <a href="#"><i class="fas fa-chart-pie"></i> <span>Genel Bakış</span></a>
                     </li>
                     <li class="nav-item" data-page="port-scanner">
                         <a href="#"><i class="fas fa-network-wired"></i> <span>Port Tarayıcı</span></a>
                     </li>
+                </ul>
+
+                <div class="nav-section-title">GELECEK MODÜLLER</div>
+                <ul>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-wave-square"></i> <span>Ağ Dinleyici (Yakında)</span></a>
+                        <a href="#"><i class="fas fa-wave-square"></i> <span>Packet Sniffer</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-shield-virus"></i> <span>Zafiyet Tarama (Yakında)</span></a>
+                        <a href="#"><i class="fas fa-globe"></i> <span>DNS Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-fingerprint"></i> <span>File Integrity</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-brain"></i> <span>AI SOC Engine</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
                 </ul>
             </nav>
+
             <div class="sidebar-footer">
-                <div class="user-status">
-                    <div class="status-dot online"></div>
-                    <span>Sistem Aktif</span>
+                <div class="system-health">
+                    <div class="pulse-indicator"></div>
+                    <div class="health-text">
+                        <span class="health-title">Sistem Durumu</span>
+                        <span class="health-sub">Tüm Servisler Aktif</span>
+                    </div>
                 </div>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
+        <!-- MAIN CONTENT AREA -->
         <main class="content">
             <header class="content-header">
-                <div class="breadcrumb">
-                    <span id="current-page">Genel Bakış</span>
+                <div class="header-left">
+                    <h1 id="current-page">Genel Bakış</h1>
+                    <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
                 </div>
-                <div class="header-actions">
-                    <div class="ip-info">
-                        <i class="fas fa-desktop"></i> Yerel IP: <span id="local-ip">127.0.0.1</span>
+                <div class="header-right">
+                    <div class="metric-pill">
+                        <i class="fas fa-microchip"></i>
+                        <span>CPU: 12%</span>
+                    </div>
+                    <div class="metric-pill">
+                        <i class="fas fa-memory"></i>
+                        <span>RAM: 34%</span>
+                    </div>
+                    <div class="ip-badge">
+                        <i class="fas fa-wifi"></i>
+                        <span>127.0.0.1</span>
                     </div>
                 </div>
             </header>
 
-            <!-- DASHBOARD OVERVIEW PAGE -->
+            <!-- PAGE: DASHBOARD -->
             <div id="page-dashboard" class="page-content">
-                <div class="welcome-section">
-                    <h2>CyberPanel Güvenlik Kontrol Merkezi</h2>
-                    <p>Siber güvenlik araçlarını tek bir arayüzden yönetin ve izleyin.</p>
+                <div class="hero-banner">
+                    <div class="hero-text">
+                        <h2>Siber Güvenlik Operasyon Merkezi</h2>
+                        <p>Etik hacklama, port tarama ve ağ güvenlik analizlerinizi tek bir premium arayüzden yönetin.</p>
+                    </div>
+                    <button class="btn-hero" onclick="switchPage('port-scanner')">
+                        <i class="fas fa-rocket"></i> Port Tarayıcıyı Çalıştır
+                    </button>
                 </div>
+
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Hazır Araçlar</span>
-                            <i class="fas fa-tools"></i>
+                        <div class="stat-top">
+                            <div class="stat-icon icon-blue">
+                                <i class="fas fa-cubes"></i>
+                            </div>
+                            <span class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> %100 Hazır</span>
                         </div>
-                        <p class="stat-value">1 / 4</p>
+                        <div class="stat-body">
+                            <h3>Aktif Modüller</h3>
+                            <p class="stat-number">1 <span class="stat-total">/ 11</span></p>
+                        </div>
                     </div>
+
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Son Tarama</span>
-                            <i class="fas fa-clock"></i>
+                        <div class="stat-top">
+                            <div class="stat-icon icon-purple">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <span class="stat-trend">Son İşlem</span>
                         </div>
-                        <p id="last-scan-time" class="stat-value">Yok</p>
+                        <div class="stat-body">
+                            <h3>Son Tarama Zamanı</h3>
+                            <p id="last-scan-time" class="stat-number stat-small">Henüz Yapılmadı</p>
+                        </div>
                     </div>
+
                     <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Tehdit Seviyesi</span>
-                            <i class="fas fa-shield-alt"></i>
+                        <div class="stat-top">
+                            <div class="stat-icon icon-emerald">
+                                <i class="fas fa-shield-halved"></i>
+                            </div>
+                            <span class="stat-trend trend-green"><i class="fas fa-check"></i> Koruma Aktif</span>
                         </div>
-                        <p class="stat-value text-green">Normal</p>
+                        <div class="stat-body">
+                            <h3>Tehdit Düzeyi</h3>
+                            <p class="stat-number text-emerald">GÜVENLİ</p>
+                        </div>
                     </div>
                 </div>
-                <div class="action-card">
-                    <h3>Hızlı Başlangıç</h3>
-                    <p>Güvenlik denetimi yapmak için ağ üzerindeki portları ve servisleri tarayın.</p>
-                    <button class="btn-primary" onclick="switchPage('port-scanner')">Port Tarayıcıyı Başlat</button>
+
+                <div class="quick-tools-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-bolt"></i> Hızlı Erişim Araçları</h3>
+                    </div>
+                    <div class="tools-grid">
+                        <div class="tool-card" onclick="switchPage('port-scanner')">
+                            <div class="tool-icon"><i class="fas fa-network-wired"></i></div>
+                            <div class="tool-info">
+                                <h4>Port Scanner Pro v2.0</h4>
+                                <p>Banner Grabbing ve TTL Tabanlı OS tespiti desteğiyle çok izlekli hızlı port taraması.</p>
+                            </div>
+                            <i class="fas fa-chevron-right tool-arrow"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- PORT TARAYICI SAYFASI -->
+            <!-- PAGE: PORT SCANNER -->
             <div id="page-port-scanner" class="page-content hidden">
-                <section class="scan-config">
-                    <div class="card">
-                        <h3>Port Tarama Yapılandırması</h3>
-                        <div class="form-group">
-                            <label for="target">Hedef Host (IP veya Domain)</label>
-                            <input type="text" id="target" placeholder="Örn: scanme.nmap.org" value="scanme.nmap.org">
+                <div class="scan-grid">
+                    <div class="card scan-config-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-sliders"></i> Tarama Yapılandırması</h3>
+                            <span class="card-sub">Hedef sistem parametrelerini belirleyin</span>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="start_port">Başlangıç Portu</label>
-                                <input type="number" id="start_port" value="1">
-                            </div>
-                            <div class="form-group">
-                                <label for="end_port">Bitiş Portu</label>
-                                <input type="number" id="end_port" value="1024">
-                            </div>
-                            <div class="form-group">
-                                <label for="threads">İş Parçacığı (Threads)</label>
-                                <input type="number" id="threads" value="100">
-                            </div>
-                        </div>
-                        <button id="scan-btn" class="btn-primary">Taramayı Başlat</button>
-                    </div>
-                </section>
 
-                <section class="results-area">
-                    <div class="card result-box">
-                        <div class="result-header">
-                            <h3>Tarama Sonuçları</h3>
-                            <div id="target-info" class="hidden">
-                                Hedef: <span id="res-target">---</span> | IP: <span id="res-ip">---</span>
+                        <div class="form-layout">
+                            <div class="form-group">
+                                <label for="target"><i class="fas fa-crosshairs"></i> Hedef Host (IP veya Domain)</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="target" placeholder="Örn: scanme.nmap.org" value="scanme.nmap.org">
+                                </div>
+                            </div>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <label for="start_port">Başlangıç Portu</label>
+                                    <input type="number" id="start_port" value="1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="end_port">Bitiş Portu</label>
+                                    <input type="number" id="end_port" value="1024">
+                                </div>
+                                <div class="form-group">
+                                    <label for="threads">Thread Sayısı</label>
+                                    <input type="number" id="threads" value="100">
+                                </div>
+                            </div>
+
+                            <button id="scan-btn" class="btn-primary-gradient">
+                                <i class="fas fa-play"></i> Taramayı Başlat
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card scan-results-card">
+                        <div class="card-header flex-between">
+                            <div>
+                                <h3><i class="fas fa-list-check"></i> Tarama Sonuçları</h3>
+                                <span class="card-sub">Bulunan açık portlar ve servis bilgileri</span>
+                            </div>
+                            <div id="target-info" class="target-badge-box hidden">
+                                <span class="target-domain" id="res-target">---</span>
+                                <span class="target-ip" id="res-ip">---</span>
                             </div>
                         </div>
-                        <div id="loading" class="hidden">
-                            <div class="spinner"></div>
-                            <p>Tarama devam ediyor...</p>
+
+                        <div id="loading" class="loading-state hidden">
+                            <div class="pulse-spinner"></div>
+                            <span>Portlar ve servisler taranıyor, lütfen bekleyin...</span>
                         </div>
+
                         <div class="table-container">
                             <table id="results-table">
                                 <thead>
                                     <tr>
-                                        <th>Port</th>
-                                        <th>Servis</th>
-                                        <th>Banner / Bilgi</th>
-                                        <th>Durum</th>
+                                        <th>PORT</th>
+                                        <th>SERVİS</th>
+                                        <th>BANNER / BİLGİ</th>
+                                        <th>DURUM</th>
                                     </tr>
                                 </thead>
                                 <tbody id="results-body">
-                                    <!-- Sonuçlar buraya eklenecek -->
+                                    <tr>
+                                        <td colspan="4" class="empty-state">
+                                            <i class="fas fa-radar"></i>
+                                            <p>Henüz bir tarama başlatılmadı.</p>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div id="summary" class="hidden">
-                            <p id="res-summary">0 açık port bulundu.</p>
+
+                        <div id="summary" class="summary-footer hidden">
+                            <i class="fas fa-check-circle"></i> <span id="res-summary">0 açık port bulundu.</span>
                         </div>
                     </div>
-                </section>
+                </div>
             </div>
         </main>
     </div>
@@ -160,8 +251,14 @@
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
             
             document.getElementById('page-' + pageId).classList.remove('hidden');
-            document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
-            document.getElementById('current-page').innerText = pageId.replace('-', ' ').toUpperCase();
+            const activeNav = document.querySelector(`[data-page="${pageId}"]`);
+            if (activeNav) activeNav.classList.add('active');
+            
+            const pageTitles = {
+                'dashboard': 'Genel Bakış',
+                'port-scanner': 'Port Tarayıcı Pro'
+            };
+            document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
         }
 
         document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {
@@ -184,12 +281,12 @@
             const targetInfo = document.getElementById('target-info');
 
             if (!target) {
-                alert('Lütfen bir hedef girin!');
+                alert('Lütfen geçerli bir hedef girin!');
                 return;
             }
 
             btn.disabled = true;
-            btn.innerText = 'Taranıyor...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Taranıyor...';
             loading.classList.remove('hidden');
             resultsBody.innerHTML = '';
             summary.classList.add('hidden');
@@ -207,22 +304,28 @@
                 if (response.ok) {
                     document.getElementById('res-target').innerText = data.target;
                     document.getElementById('res-ip').innerText = data.ip;
-                    document.getElementById('res-summary').innerText = `Tarama tamamlandı. ${data.count} açık port bulundu.`;
+                    document.getElementById('res-summary').innerText = `Tarama başarıyla tamamlandı. ${data.count} açık port tespit edildi.`;
                     
                     targetInfo.classList.remove('hidden');
                     summary.classList.remove('hidden');
                     document.getElementById('last-scan-time').innerText = data.timestamp;
 
                     if (data.results.length === 0) {
-                        resultsBody.innerHTML = '<tr><td colspan="4" class="no-ports">Açık port bulunamadı.</td></tr>';
+                        resultsBody.innerHTML = `
+                            <tr>
+                                <td colspan="4" class="empty-state">
+                                    <i class="fas fa-shield-cat"></i>
+                                    <p>Belirtilen port aralığında açık port bulunamadı.</p>
+                                </td>
+                            </tr>`;
                     } else {
                         data.results.forEach(res => {
                             const row = `
                                 <tr>
-                                    <td><strong>${res.port}</strong></td>
-                                    <td>${res.service}</td>
-                                    <td><span class="badge-subtle">${res.banner || '-'}</span></td>
-                                    <td><span class="badge-success">AÇIK</span></td>
+                                    <td><code class="port-code">${res.port}</code></td>
+                                    <td><span class="service-name">${res.service}</span></td>
+                                    <td><span class="banner-text">${res.banner || '-'}</span></td>
+                                    <td><span class="status-pill status-open"><i class="fas fa-circle"></i> AÇIK</span></td>
                                 </tr>
                             `;
                             resultsBody.innerHTML += row;
@@ -233,10 +336,10 @@
                 }
             } catch (error) {
                 console.error(error);
-                alert('Tarama sırasında bir hata oluştu.');
+                alert('Tarama sırasında bir bağlantı hatası oluştu.');
             } finally {
                 btn.disabled = false;
-                btn.innerText = 'Taramayı Başlat';
+                btn.innerHTML = '<i class="fas fa-play"></i> Taramayı Başlat';
                 loading.classList.add('hidden');
             }
         });
