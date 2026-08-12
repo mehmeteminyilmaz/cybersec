@@ -2,10 +2,6 @@
 
 CyberPanel, siber güvenlik araçlarını tek bir modern web arayüzünden çalıştırmayı ve izlemeyi sağlayan Flask tabanlı web uygulamasıdır.
 
-## 📸 Önizleme
-
-![CyberPanel Preview](assets/cyberpanel_preview.png)
-
 ## 🚀 Çalıştırma
 
 ```bash

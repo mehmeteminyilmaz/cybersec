@@ -11,12 +11,6 @@ Siber güvenlik araçlarını ve analiz modüllerini tek bir profesyonel merkezd
 
 ---
 
-## 📸 Ekran Görüntüsü (Preview)
-
-![CyberPanel Preview](cyber-panel/assets/cyberpanel_preview.png)
-
----
-
 ## 🖥️ CyberPanel Hakkında
 
 **CyberPanel**, terminal tabanlı güvenlik araçlarının gücünü modern, sade ve mat bir web kontrol paneli ile buluşturan yeni nesil bir siber güvenlik operasyon merkezidir.
