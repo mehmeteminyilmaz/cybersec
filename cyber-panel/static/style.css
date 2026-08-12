@@ -1,9 +1,9 @@
 /* ==========================================================================
-   CYBERPANEL - MATTE ENTERPRISE DARK SYSTEM (NO GLOW / NO AI VIBE)
+   CYBERPANEL - MATTE ENTERPRISE DARK SYSTEM (CLEAN ALIGNED & BALANCED)
    ========================================================================== */
 
 :root {
-    /* Solid Color Palette (GitHub / Linear Dark Theme) */
+    /* Color Palette */
     --bg-dark: #0d1117;
     --bg-sidebar: #161b22;
     --bg-card: #161b22;
@@ -15,13 +15,15 @@
     --border-hover: #8b949e;
     --border-focus: #58a6ff;
 
-    /* Solid Primary Colors */
-    --primary: #238636;          /* GitHub Green Button */
-    --primary-hover: #2ea043;
+    /* Primary Accent Colors */
+    --primary: #1f6feb;          /* Clean GitHub Blue */
+    --primary-hover: #388bfd;
+    --btn-scan: #238636;         /* Clean GitHub Green Button */
+    --btn-scan-hover: #2ea043;
+    
     --accent-blue: #58a6ff;
     --accent-emerald: #3fb950;
     --accent-purple: #a371f7;
-    --accent-amber: #d29922;
 
     /* Typography Colors */
     --text-heading: #f0f6fc;
@@ -29,7 +31,7 @@
     --text-muted: #8b949e;
 
     /* Layout & Geometry */
-    --sidebar-width: 270px;
+    --sidebar-width: 260px;
     --radius-sm: 6px;
     --radius-md: 8px;
     --radius-lg: 12px;
@@ -73,7 +75,7 @@ a {
 }
 
 .sidebar-header {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1.25rem;
     border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -87,7 +89,7 @@ a {
     width: 36px;
     height: 36px;
     border-radius: var(--radius-sm);
-    background: #1f6feb;
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -175,7 +177,7 @@ a {
 }
 
 .nav-item.active {
-    background-color: #1f6feb;
+    background-color: var(--primary);
 }
 
 .nav-item.active a,
@@ -493,12 +495,13 @@ a {
 }
 
 /* ==========================================================================
-   PORT SCANNER PAGE
+   PORT SCANNER PAGE (CLEAN ALIGNED & PROPORTIONED)
    ========================================================================== */
 .scan-grid {
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 380px 1fr;
     gap: 1.5rem;
+    align-items: start;
 }
 
 @media (max-width: 1024px) {
@@ -556,14 +559,17 @@ a {
 }
 
 label {
-    display: block;
-    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: var(--text-body);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.45rem;
+    white-space: nowrap;
 }
 
-label i { color: var(--text-muted); margin-right: 0.3rem; }
+label i { color: var(--text-muted); }
 
 input {
     width: 100%;
@@ -582,16 +588,16 @@ input:focus {
     border-color: var(--border-focus);
 }
 
-.form-row-3 {
+.form-row-2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
 }
 
 .btn-primary-gradient {
     width: 100%;
     padding: 0.75rem;
-    background-color: var(--primary);
+    background-color: var(--btn-scan);
     border: 1px solid rgba(240, 246, 252, 0.1);
     border-radius: var(--radius-sm);
     color: #ffffff;
@@ -608,7 +614,7 @@ input:focus {
 }
 
 .btn-primary-gradient:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--btn-scan-hover);
 }
 
 /* Loading State */
