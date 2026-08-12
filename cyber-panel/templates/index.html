@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberPanel | Central Security Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -16,29 +15,29 @@
             <div class="sidebar-header">
                 <div class="logo">
                     <h1>CYBER<span>PANEL</span></h1>
-                    <p>v1.0.0 Alpha</p>
+                    <span class="version-badge">v1.0.0</span>
                 </div>
             </div>
             <nav class="sidebar-nav">
                 <ul>
                     <li class="nav-item active" data-page="dashboard">
-                        <a href="#"><i class="fas fa-th-large"></i> <span>Genel Bakış</span></a>
+                        <a href="#"><i class="fas fa-chart-line"></i> <span>Genel Bakış</span></a>
                     </li>
                     <li class="nav-item" data-page="port-scanner">
-                        <a href="#"><i class="fas fa-search"></i> <span>Port Tarayıcı</span></a>
+                        <a href="#"><i class="fas fa-network-wired"></i> <span>Port Tarayıcı</span></a>
                     </li>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-network-wired"></i> <span>Ağ Dinleyici (Yakında)</span></a>
+                        <a href="#"><i class="fas fa-wave-square"></i> <span>Ağ Dinleyici (Yakında)</span></a>
                     </li>
                     <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-shield-alt"></i> <span>Zafiyet Tarama (Yakında)</span></a>
+                        <a href="#"><i class="fas fa-shield-virus"></i> <span>Zafiyet Tarama (Yakında)</span></a>
                     </li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
                 <div class="user-status">
                     <div class="status-dot online"></div>
-                    <span>System Online</span>
+                    <span>Sistem Aktif</span>
                 </div>
             </div>
         </aside>
@@ -51,7 +50,7 @@
                 </div>
                 <div class="header-actions">
                     <div class="ip-info">
-                        Yerel IP: <span id="local-ip">Kontrol ediliyor...</span>
+                        <i class="fas fa-desktop"></i> Yerel IP: <span id="local-ip">127.0.0.1</span>
                     </div>
                 </div>
             </header>
@@ -59,29 +58,35 @@
             <!-- DASHBOARD OVERVIEW PAGE -->
             <div id="page-dashboard" class="page-content">
                 <div class="welcome-section">
-                    <h2><span class="highlight">CyberPanel</span>'e Hoş Geldiniz</h2>
-                    <p>Etik hackerlar için merkezi güvenlik aracı yönetim platformu.</p>
+                    <h2>CyberPanel Güvenlik Kontrol Merkezi</h2>
+                    <p>Siber güvenlik araçlarını tek bir arayüzden yönetin ve izleyin.</p>
                 </div>
                 <div class="stats-grid">
-                    <div class="stat-card glass">
-                        <i class="fas fa-terminal"></i>
-                        <h4>Hazır Araçlar</h4>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Hazır Araçlar</span>
+                            <i class="fas fa-tools"></i>
+                        </div>
                         <p class="stat-value">1 / 4</p>
                     </div>
-                    <div class="stat-card glass">
-                        <i class="fas fa-history"></i>
-                        <h4>Son Tarama</h4>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Son Tarama</span>
+                            <i class="fas fa-clock"></i>
+                        </div>
                         <p id="last-scan-time" class="stat-value">Yok</p>
                     </div>
-                    <div class="stat-card glass">
-                        <i class="fas fa-bug"></i>
-                        <h4>Tehdit Seviyesi</h4>
-                        <p class="stat-value green">DÜŞÜK</p>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Tehdit Seviyesi</span>
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <p class="stat-value text-green">Normal</p>
                     </div>
                 </div>
-                <div class="action-card glass">
+                <div class="action-card">
                     <h3>Hızlı Başlangıç</h3>
-                    <p>Güvenliği sağlamaya hazır mısınız? Ağ altyapınızı tarayarak başlayın.</p>
+                    <p>Güvenlik denetimi yapmak için ağ üzerindeki portları ve servisleri tarayın.</p>
                     <button class="btn-primary" onclick="switchPage('port-scanner')">Port Tarayıcıyı Başlat</button>
                 </div>
             </div>
@@ -89,8 +94,8 @@
             <!-- PORT TARAYICI SAYFASI -->
             <div id="page-port-scanner" class="page-content hidden">
                 <section class="scan-config">
-                    <div class="card glass">
-                        <h3>Tarayıcı Ayarları</h3>
+                    <div class="card">
+                        <h3>Port Tarama Yapılandırması</h3>
                         <div class="form-group">
                             <label for="target">Hedef Host (IP veya Domain)</label>
                             <input type="text" id="target" placeholder="Örn: scanme.nmap.org" value="scanme.nmap.org">
@@ -109,12 +114,12 @@
                                 <input type="number" id="threads" value="100">
                             </div>
                         </div>
-                        <button id="scan-btn" class="btn-primary">TARAMAYI BAŞLAT</button>
+                        <button id="scan-btn" class="btn-primary">Taramayı Başlat</button>
                     </div>
                 </section>
 
                 <section class="results-area">
-                    <div class="card glass result-box">
+                    <div class="card result-box">
                         <div class="result-header">
                             <h3>Tarama Sonuçları</h3>
                             <div id="target-info" class="hidden">
@@ -122,7 +127,7 @@
                             </div>
                         </div>
                         <div id="loading" class="hidden">
-                            <div class="scanner-line"></div>
+                            <div class="spinner"></div>
                             <p>Tarama devam ediyor...</p>
                         </div>
                         <div class="table-container">
@@ -131,6 +136,7 @@
                                     <tr>
                                         <th>Port</th>
                                         <th>Servis</th>
+                                        <th>Banner / Bilgi</th>
                                         <th>Durum</th>
                                     </tr>
                                 </thead>
@@ -149,7 +155,6 @@
     </div>
 
     <script>
-        // Page Switching Logic
         function switchPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -160,15 +165,12 @@
         }
 
         document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {
-            item.addEventListener('click', () => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
                 switchPage(item.getAttribute('data-page'));
             });
         });
 
-        // Local IP Display (Mock)
-        document.getElementById('local-ip').innerText = "127.0.0.1";
-
-        // Scanner Logic
         document.getElementById('scan-btn').addEventListener('click', async () => {
             const target = document.getElementById('target').value;
             const start_port = document.getElementById('start_port').value;
@@ -187,7 +189,7 @@
             }
 
             btn.disabled = true;
-            btn.innerText = 'TARANIYOR...';
+            btn.innerText = 'Taranıyor...';
             loading.classList.remove('hidden');
             resultsBody.innerHTML = '';
             summary.classList.add('hidden');
@@ -212,14 +214,15 @@
                     document.getElementById('last-scan-time').innerText = data.timestamp;
 
                     if (data.results.length === 0) {
-                        resultsBody.innerHTML = '<tr><td colspan="3" class="no-ports">Açık port bulunamadı.</td></tr>';
+                        resultsBody.innerHTML = '<tr><td colspan="4" class="no-ports">Açık port bulunamadı.</td></tr>';
                     } else {
                         data.results.forEach(res => {
                             const row = `
                                 <tr>
-                                    <td>${res.port}</td>
+                                    <td><strong>${res.port}</strong></td>
                                     <td>${res.service}</td>
-                                    <td class="status-open">AÇIK</td>
+                                    <td><span class="badge-subtle">${res.banner || '-'}</span></td>
+                                    <td><span class="badge-success">AÇIK</span></td>
                                 </tr>
                             `;
                             resultsBody.innerHTML += row;
@@ -233,7 +236,7 @@
                 alert('Tarama sırasında bir hata oluştu.');
             } finally {
                 btn.disabled = false;
-                btn.innerText = 'TARAMAYI BAŞLAT';
+                btn.innerText = 'Taramayı Başlat';
                 loading.classList.add('hidden');
             }
         });
