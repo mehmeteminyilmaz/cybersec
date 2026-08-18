@@ -38,16 +38,37 @@
                     </li>
                 </ul>
 
-                <div class="nav-section-title">MODÜLLER</div>
-                <ul>
+                <div class="nav-section-title collapsible-trigger" id="toggle-modules-btn">
+                    <span>DİĞER MODÜLLER (9)</span>
+                    <i class="fas fa-chevron-down toggle-arrow"></i>
+                </div>
+                <ul id="modules-collapsible-list" class="collapsible-nav-list">
                     <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-globe"></i> <span>DNS Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-hashtag"></i> <span>Hash Calculator</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
                     <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-fingerprint"></i> <span>File Integrity</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
                     <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-key"></i> <span>Password Checker</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-file-alt"></i> <span>Log Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-biohazard"></i> <span>Threat Intel</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-brain"></i> <span>AI SOC Engine</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-bolt"></i> <span>AI Incident Resp.</span> <span class="badge-upcoming">Yakında</span></a>
+                    </li>
+                    <li class="nav-item disabled">
+                        <a href="#"><i class="fas fa-bug"></i> <span>Malware Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
                 </ul>
             </nav>
@@ -67,22 +88,26 @@
         <main class="content">
             <header class="content-header">
                 <div class="header-left">
-                    <h1 id="current-page">Genel Bakış</h1>
-                    <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
+                    <button id="sidebar-toggle-btn" class="btn-sidebar-toggle" title="Kenar Çubuğunu Daralt/Genişlet">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div>
+                        <h1 id="current-page">Genel Bakış</h1>
+                        <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
+                    </div>
                 </div>
                 <div class="header-right">
-                    <div class="metric-pill">
-                        <i class="fas fa-microchip"></i>
-                        <span>CPU: %12</span>
-                    </div>
-                    <div class="metric-pill">
-                        <i class="fas fa-memory"></i>
-                        <span>RAM: %34</span>
+                    <div class="status-pill status-open">
+                        <i class="fas fa-circle"></i> Sistem Aktif
                     </div>
                     <div class="ip-badge">
                         <i class="fas fa-wifi"></i>
                         <span>127.0.0.1</span>
                     </div>
+                    <a href="https://github.com/mehmeteminyilmaz/cybersec" target="_blank" class="github-header-btn" title="GitHub Repository">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
                 </div>
             </header>
 
@@ -567,6 +592,24 @@
                 switchPage(item.getAttribute('data-page'));
             });
         });
+
+        // Sidebar Toggle (Daralt / Genişlet)
+        const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', () => {
+                document.querySelector('.app-container').classList.toggle('sidebar-collapsed');
+            });
+        }
+
+        // Modüller Akordiyonu (Açılır / Kapanır)
+        const toggleModulesBtn = document.getElementById('toggle-modules-btn');
+        const modulesList = document.getElementById('modules-collapsible-list');
+        if (toggleModulesBtn && modulesList) {
+            toggleModulesBtn.addEventListener('click', () => {
+                toggleModulesBtn.classList.toggle('collapsed');
+                modulesList.classList.toggle('collapsed');
+            });
+        }
 
         // --- PACKET SNIFFER LOGIC ---
         async function fetchPackets() {
