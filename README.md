@@ -32,7 +32,7 @@ Siber güvenlik araçlarını ve analiz modüllerini tek bir profesyonel merkezd
 | :-: | :--- | :--- | :-: |
 | **1** | **Port Scanner v2.0 Pro** | Çok izlekli port tarama, Banner Grabbing ve OS tespiti | ✅ Tamamlandı |
 | **2** | **Packet Sniffer v1.0** | Raw socket / binary unpacking tabanlı ağ paket dinleme ve Wireshark dökümü | ✅ Tamamlandı |
-| **3** | **DNS Analyzer** | DNS sorguları, MX/NS/TXT analizleri ve tunneling tespiti | 🔴 Planlandı |
+| **3** | **DNS Analyzer v1.0** | DNS sorguları, A/MX/NS/TXT kayıtları ve Shannon Entropi Tunneling tespiti | ✅ Tamamlandı |
 | **4** | **Hash Calculator** | Cryptographic hash üretici ve parola güvenlik analizi | 🔴 Planlandı |
 | **5** | **File Integrity Monitor** | Bütünlük ve dosya değişiklik takip sistemi (FIM) | 🔴 Planlandı |
 | **6** | **Password Strength Checker** | Entropi tabanlı parola denetleyicisi | 🔴 Planlandı |

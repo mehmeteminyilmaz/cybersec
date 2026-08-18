@@ -33,19 +33,16 @@
                     <li class="nav-item" data-page="port-scanner">
                         <a href="#"><i class="fas fa-network-wired"></i> <span>Port Tarayıcı</span></a>
                     </li>
-                    <li class="nav-item" data-page="packet-sniffer">
-                        <a href="#"><i class="fas fa-wave-square"></i> <span>Packet Sniffer</span></a>
+                    <li class="nav-item" data-page="dns-analyzer">
+                        <a href="#"><i class="fas fa-globe"></i> <span>DNS Analyzer</span></a>
                     </li>
                 </ul>
 
                 <div class="nav-section-title collapsible-trigger" id="toggle-modules-btn">
-                    <span>DİĞER MODÜLLER (9)</span>
+                    <span>DİĞER MODÜLLER (8)</span>
                     <i class="fas fa-chevron-down toggle-arrow"></i>
                 </div>
                 <ul id="modules-collapsible-list" class="collapsible-nav-list">
-                    <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-globe"></i> <span>DNS Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
-                    </li>
                     <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-hashtag"></i> <span>Hash Calculator</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
@@ -119,8 +116,8 @@
                         <p>Etik hacklama, ağ analizi, tehdit istihbaratı ve otomatik olay müdahalesi için tasarlanmış kurumsal düzey siber güvenlik platformu. 11 modül, tek arayüz.</p>
                     </div>
                     <div class="hero-badges">
-                        <div class="hero-badge"><i class="fas fa-check-circle"></i> 2 / 11 Modül Aktif</div>
-                        <div class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 9 Modül Geliştiriliyor</div>
+                        <div class="hero-badge"><i class="fas fa-check-circle"></i> 3 / 11 Modül Aktif</div>
+                        <div class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 8 Modül Geliştiriliyor</div>
                     </div>
                 </div>
 
@@ -134,7 +131,7 @@
                         <div class="stat-body">
                             <h3>Toplam Modül</h3>
                             <p class="stat-number">11</p>
-                            <p class="stat-desc">2 aktif · 9 geliştiriliyor</p>
+                            <p class="stat-desc">3 aktif · 8 geliştiriliyor</p>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -144,8 +141,8 @@
                         </div>
                         <div class="stat-body">
                             <h3>Aktif Modüller</h3>
-                            <p class="stat-number">2</p>
-                            <p class="stat-desc">Port Scanner + Packet Sniffer</p>
+                            <p class="stat-number">3</p>
+                            <p class="stat-desc">Scanner + Sniffer + DNS</p>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -155,7 +152,7 @@
                         </div>
                         <div class="stat-body">
                             <h3>Test Durumu</h3>
-                            <p class="stat-number text-emerald">11</p>
+                            <p class="stat-number text-emerald">15</p>
                             <p class="stat-desc">Tüm testler geçti ✅</p>
                         </div>
                     </div>
@@ -210,15 +207,15 @@
                                 </div>
                                 <span class="module-badge badge-active">Aktif</span>
                             </div>
-                            <!-- COMING SOON -->
-                            <div class="module-entry upcoming">
-                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-globe"></i></div>
+                            <div class="module-entry active" onclick="switchPage('dns-analyzer')">
+                                <div class="module-icon-sm" style="background: rgba(63,185,80,0.15); color: #3fb950;"><i class="fas fa-globe"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">DNS Analyzer <code>v1.0</code></span>
-                                    <span class="module-desc">DNS sorguları, MX/NS/TXT kayıtları, tunneling tespiti</span>
+                                    <span class="module-desc">DNS sorguları, MX/NS/TXT kayıtları, Shannon Entropi Tunneling tespiti</span>
                                 </div>
-                                <span class="module-badge badge-upcoming">Yakında</span>
+                                <span class="module-badge badge-active">Aktif</span>
                             </div>
+                            <!-- COMING SOON -->
                             <div class="module-entry upcoming">
                                 <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-hashtag"></i></div>
                                 <div class="module-entry-info">
@@ -543,6 +540,98 @@
                 </div>
             </div>
 
+            <!-- PAGE: DNS ANALYZER -->
+            <div id="page-dns-analyzer" class="page-content hidden">
+                <div class="card scan-config-card" style="margin-bottom: 1.25rem;">
+                    <div class="card-header">
+                        <h3><i class="fas fa-globe"></i> DNS Sorgulama ve Anomali Analizörü</h3>
+                        <span class="card-sub">Domain DNS kayıtları çözünürlüğü ve Shannon Entropi tabanlı DNS Tunneling analizi</span>
+                    </div>
+
+                    <div class="form-layout">
+                        <div class="form-group">
+                            <label for="dns-target"><i class="fas fa-crosshairs"></i> Hedef Domain veya IP Adresi</label>
+                            <input type="text" id="dns-target" placeholder="Örn: google.com veya a8f9d3k2.attacker.com" value="google.com">
+                        </div>
+                        <button id="dns-analyze-btn" class="btn-primary-gradient">
+                            <i class="fas fa-search"></i> DNS Sorgula & Analiz Et
+                        </button>
+                    </div>
+                </div>
+
+                <div id="dns-loading" class="loading-state hidden">
+                    <div class="pulse-spinner"></div>
+                    <span>DNS kayıtları sorgulanıyor ve tunneling riski analiz ediliyor...</span>
+                </div>
+
+                <div id="dns-results-grid" class="scan-grid hidden">
+                    <!-- LEFT COLUMN: DNS RECORDS TABLE -->
+                    <div class="card">
+                        <div class="card-header flex-between">
+                            <div>
+                                <h3><i class="fas fa-list-check"></i> DNS Kayıtları</h3>
+                                <span class="card-sub" id="dns-res-sub">Çözümlenen tüm DNS sorgu sonuçları</span>
+                            </div>
+                            <div class="ip-badge">
+                                <i class="fas fa-server"></i>
+                                <span id="dns-res-ip">127.0.0.1</span>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <table id="dns-table">
+                                <thead>
+                                    <tr>
+                                        <th>TİP</th>
+                                        <th>NAME / HOST</th>
+                                        <th>DEĞER / HEDEF</th>
+                                        <th>TTL</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dns-records-body">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: TUNNELING & ANOMALY INTELLIGENCE -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-shield-virus"></i> DNS Tunneling & Anomali Analizi</h3>
+                            <span class="card-sub">Subdomain entropi ve gizli veri sızdırma skorlaması</span>
+                        </div>
+
+                        <div style="padding: 1.25rem;">
+                            <!-- RISK SCORE METER -->
+                            <div style="margin-bottom: 1.25rem; text-align: center;">
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">GÜVENLİK RİSK SKORU</span>
+                                <div id="dns-risk-score" style="font-size: 2.5rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin: 0.2rem 0;">0%</div>
+                                <span id="dns-risk-level-badge" class="module-badge badge-active">DÜŞÜK (GÜVENLİ)</span>
+                            </div>
+
+                            <!-- METRIC BADGES -->
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+                                <div class="stat-card" style="padding: 0.85rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">Shannon Entropisi</span>
+                                    <strong id="dns-entropy-val" style="font-size: 1.1rem; color: var(--accent-blue); font-family: 'JetBrains Mono';">1.8 / 5.0</strong>
+                                </div>
+                                <div class="stat-card" style="padding: 0.85rem;">
+                                    <span style="font-size: 0.75rem; color: var(--text-muted);">Subdomain Uzunluğu</span>
+                                    <strong id="dns-len-val" style="font-size: 1.1rem; color: var(--text-heading); font-family: 'JetBrains Mono';">6 Karakter</strong>
+                                </div>
+                            </div>
+
+                            <!-- ANOMALY REASONS LIST -->
+                            <div>
+                                <strong style="font-size: 0.85rem; color: var(--text-heading); display: block; margin-bottom: 0.5rem;">Tespit Edilen Bulgular:</strong>
+                                <ul id="dns-reasons-list" style="list-style: none; display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.82rem; color: var(--text-muted);">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- PACKET INSPECTOR MODAL -->
             <div id="packet-modal" class="modal-overlay hidden">
                 <div class="modal-content">
@@ -599,9 +688,90 @@
             const pageTitles = {
                 'dashboard': 'Genel Bakış',
                 'port-scanner': 'Port Tarayıcı Pro',
-                'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)'
+                'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)',
+                'dns-analyzer': 'DNS Sorgu & Anomali Analizörü (DNS Analyzer)'
             };
             document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
+        }
+
+        // --- DNS ANALYZER LOGIC ---
+        const dnsAnalyzeBtn = document.getElementById('dns-analyze-btn');
+        if (dnsAnalyzeBtn) {
+            dnsAnalyzeBtn.addEventListener('click', async () => {
+                const target = document.getElementById('dns-target').value;
+                if (!target) {
+                    alert('Lütfen geçerli bir etki alanı (domain) girin!');
+                    return;
+                }
+
+                const loading = document.getElementById('dns-loading');
+                const resultsGrid = document.getElementById('dns-results-grid');
+                const recordsBody = document.getElementById('dns-records-body');
+
+                dnsAnalyzeBtn.disabled = true;
+                dnsAnalyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analiz Ediliyor...';
+                loading.classList.remove('hidden');
+                resultsGrid.classList.add('hidden');
+                recordsBody.innerHTML = '';
+
+                try {
+                    const response = await fetch('/api/dns/analyze', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ target })
+                    });
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        document.getElementById('dns-res-ip').innerText = data.ip || 'Bilinmiyor';
+                        document.getElementById('dns-res-sub').innerText = `${data.target} için ${data.record_count} DNS kaydı çözümlendi`;
+
+                        // DNS Kayıt Tablosu
+                        data.records.forEach(rec => {
+                            const row = `
+                                <tr>
+                                    <td><span class="proto-pill proto-tcp">${rec.type}</span></td>
+                                    <td><code>${rec.name}</code></td>
+                                    <td><span style="font-size:0.85rem; color:var(--text-body); font-family:'JetBrains Mono';">${rec.value}</span></td>
+                                    <td><code>${rec.ttl}</code></td>
+                                </tr>
+                            `;
+                            recordsBody.innerHTML += row;
+                        });
+
+                        // Tunneling Analizi
+                        const t = data.tunneling_analysis;
+                        const scoreElem = document.getElementById('dns-risk-score');
+                        const levelBadge = document.getElementById('dns-risk-level-badge');
+                        
+                        scoreElem.innerText = `${t.risk_score}%`;
+                        scoreElem.style.color = t.risk_score >= 65 ? '#f85149' : (t.risk_score >= 35 ? '#d29922' : '#3fb950');
+                        
+                        levelBadge.innerText = t.risk_level;
+                        levelBadge.className = `module-badge ${t.risk_score >= 65 ? 'badge-warn' : 'badge-active'}`;
+
+                        document.getElementById('dns-entropy-val').innerText = `${t.entropy} / 5.0`;
+                        document.getElementById('dns-len-val').innerText = `${t.subdomain_len} Karakter`;
+
+                        const reasonsList = document.getElementById('dns-reasons-list');
+                        reasonsList.innerHTML = '';
+                        t.reasons.forEach(r => {
+                            reasonsList.innerHTML += `<li style="display:flex; align-items:center; gap:0.4rem;"><i class="fas fa-check-circle" style="color:var(--accent-blue); font-size:0.75rem;"></i> ${r}</li>`;
+                        });
+
+                        resultsGrid.classList.remove('hidden');
+                    } else {
+                        alert('Hata: ' + (data.error || 'DNS analizi başarısız oldu.'));
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('DNS sorgulama sırasında bağlantı hatası oluştu.');
+                } finally {
+                    dnsAnalyzeBtn.disabled = false;
+                    dnsAnalyzeBtn.innerHTML = '<i class="fas fa-search"></i> DNS Sorgula & Analiz Et';
+                    loading.classList.add('hidden');
+                }
+            });
         }
 
         document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {

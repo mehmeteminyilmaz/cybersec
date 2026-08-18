@@ -9,8 +9,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.extend([
     os.path.abspath(os.path.join(BASE_DIR, '..', 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'packet-sniffer')),
+    os.path.abspath(os.path.join(BASE_DIR, '..', 'dns-analyzer')),
     os.path.abspath(os.path.join(BASE_DIR, 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, 'packet-sniffer')),
+    os.path.abspath(os.path.join(BASE_DIR, 'dns-analyzer')),
 ])
 
 try:
@@ -24,6 +26,11 @@ try:
     from sniffer import generate_sample_packets
 except ImportError:
     def generate_sample_packets(count=5): return []
+
+try:
+    from dns_analyzer import analyze_dns
+except ImportError:
+    def analyze_dns(target): return {"error": "DNS modülü yüklenemedi"}
 
 app = Flask(__name__)
 
@@ -69,7 +76,21 @@ def port_scanner():
 def packet_sniffer():
     return render_template('index.html', active_page='packet-sniffer')
 
+@app.route('/dns-analyzer')
+def dns_analyzer():
+    return render_template('index.html', active_page='dns-analyzer')
+
 # --- API ENDPOINTS ---
+@app.route('/api/dns/analyze', methods=['POST'])
+def api_dns_analyze():
+    data = request.json or {}
+    target = data.get('target')
+    if not target:
+        return jsonify({"error": "Lütfen analiz için bir etki alanı (domain) girin."}), 400
+
+    result = analyze_dns(target)
+    return jsonify(result)
+
 @app.route('/api/sniffer/packets', methods=['GET', 'POST'])
 def api_sniffer_packets():
     data = request.json or {} if request.method == 'POST' else {}
