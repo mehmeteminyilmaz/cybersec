@@ -88,13 +88,15 @@
         <main class="content">
             <header class="content-header">
                 <div class="header-left">
-                    <h1 id="current-page">Genel Bakış</h1>
-                    <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
+                    <button id="sidebar-toggle-btn" class="btn-sidebar-toggle" title="Sol Menüyü Daralt/Genişlet">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="header-title-box">
+                        <h1 id="current-page">Genel Bakış</h1>
+                        <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
+                    </div>
                 </div>
                 <div class="header-right">
-                    <div class="status-pill status-open">
-                        <i class="fas fa-circle"></i> Sistem Aktif
-                    </div>
                     <div class="ip-badge">
                         <i class="fas fa-wifi"></i>
                         <span>127.0.0.1</span>
@@ -588,6 +590,14 @@
             });
         });
 
+
+        // Sidebar Toggle (Daralt / Genişlet - Mini Icon Modu)
+        const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', () => {
+                document.querySelector('.app-container').classList.toggle('sidebar-collapsed');
+            });
+        }
 
         // Modüller Akordiyonu (Açılır / Kapanır)
         const toggleModulesBtn = document.getElementById('toggle-modules-btn');
