@@ -88,13 +88,8 @@
         <main class="content">
             <header class="content-header">
                 <div class="header-left">
-                    <button id="sidebar-toggle-btn" class="btn-sidebar-toggle" title="Kenar Çubuğunu Daralt/Genişlet">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div>
-                        <h1 id="current-page">Genel Bakış</h1>
-                        <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
-                    </div>
+                    <h1 id="current-page">Genel Bakış</h1>
+                    <p class="header-subtitle">Merkezi Güvenlik & Denetim Kontrol Paneli</p>
                 </div>
                 <div class="header-right">
                     <div class="status-pill status-open">
@@ -593,13 +588,6 @@
             });
         });
 
-        // Sidebar Toggle (Daralt / Genişlet)
-        const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-        if (sidebarToggleBtn) {
-            sidebarToggleBtn.addEventListener('click', () => {
-                document.querySelector('.app-container').classList.toggle('sidebar-collapsed');
-            });
-        }
 
         // Modüller Akordiyonu (Açılır / Kapanır)
         const toggleModulesBtn = document.getElementById('toggle-modules-btn');
