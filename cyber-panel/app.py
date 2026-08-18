@@ -7,6 +7,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.extend([
+    os.path.abspath(os.path.join(BASE_DIR, 'modules')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'packet-sniffer')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'dns-analyzer')),
