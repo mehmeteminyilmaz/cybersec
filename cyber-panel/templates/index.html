@@ -602,11 +602,6 @@
                 'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)'
             };
             document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
-
-            // Packet Sniffer sayfasına geçildiğinde otomatik dinlemeyi başlat
-            if (pageId === 'packet-sniffer' && !isSniffing) {
-                startSniffing();
-            }
         }
 
         document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {
