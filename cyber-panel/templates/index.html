@@ -567,6 +567,27 @@
         let isSniffing = false;
         let sniffInterval = null;
 
+        function startSniffing() {
+            if (isSniffing) return;
+            isSniffing = true;
+            const startBtn = document.getElementById('sniffer-start-btn');
+            const stopBtn = document.getElementById('sniffer-stop-btn');
+            if (startBtn) startBtn.classList.add('hidden');
+            if (stopBtn) stopBtn.classList.remove('hidden');
+            
+            fetchPackets();
+            sniffInterval = setInterval(fetchPackets, 1500);
+        }
+
+        function stopSniffing() {
+            isSniffing = false;
+            if (sniffInterval) clearInterval(sniffInterval);
+            const startBtn = document.getElementById('sniffer-start-btn');
+            const stopBtn = document.getElementById('sniffer-stop-btn');
+            if (startBtn) startBtn.classList.remove('hidden');
+            if (stopBtn) stopBtn.classList.add('hidden');
+        }
+
         function switchPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -581,6 +602,11 @@
                 'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)'
             };
             document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
+
+            // Packet Sniffer sayfasına geçildiğinde otomatik dinlemeyi başlat
+            if (pageId === 'packet-sniffer' && !isSniffing) {
+                startSniffing();
+            }
         }
 
         document.querySelectorAll('.nav-item:not(.disabled)').forEach(item => {
@@ -589,7 +615,6 @@
                 switchPage(item.getAttribute('data-page'));
             });
         });
-
 
         // Sidebar Toggle (Daralt / Genişlet - Mini Icon Modu)
         const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
@@ -609,7 +634,9 @@
             });
         }
 
-        // --- PACKET SNIFFER LOGIC ---
+        // Button Listener'lar
+        document.getElementById('sniffer-start-btn').addEventListener('click', startSniffing);
+        document.getElementById('sniffer-stop-btn').addEventListener('click', stopSniffing);
         async function fetchPackets() {
             try {
                 const response = await fetch('/api/sniffer/packets', {
@@ -684,22 +711,7 @@
             renderPackets();
         }
 
-        document.getElementById('sniffer-start-btn').addEventListener('click', () => {
-            if (isSniffing) return;
-            isSniffing = true;
-            document.getElementById('sniffer-start-btn').classList.add('hidden');
-            document.getElementById('sniffer-stop-btn').classList.remove('hidden');
-            
-            fetchPackets();
-            sniffInterval = setInterval(fetchPackets, 2000);
-        });
 
-        document.getElementById('sniffer-stop-btn').addEventListener('click', () => {
-            isSniffing = false;
-            clearInterval(sniffInterval);
-            document.getElementById('sniffer-start-btn').classList.remove('hidden');
-            document.getElementById('sniffer-stop-btn').classList.add('hidden');
-        });
 
         document.getElementById('sniffer-clear-btn').addEventListener('click', () => {
             allCapturedPackets = [];
