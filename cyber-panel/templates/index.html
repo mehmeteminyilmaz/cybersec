@@ -88,81 +88,295 @@
 
             <!-- PAGE: DASHBOARD -->
             <div id="page-dashboard" class="page-content">
+
+                <!-- HERO BANNER -->
                 <div class="hero-banner">
                     <div class="hero-text">
-                        <h2>Siber Güvenlik Operasyon Merkezi</h2>
-                        <p>Etik hacklama, port tarama ve ağ güvenlik analizlerinizi tek bir arayüzden yönetin.</p>
+                        <div class="hero-eyebrow"><i class="fas fa-shield-halved"></i> CyberSec Suite — Operasyon Merkezi</div>
+                        <h2>Siber Güvenlik Araçları <span class="hero-highlight">Tek Çatı Altında</span></h2>
+                        <p>Etik hacklama, ağ analizi, tehdit istihbaratı ve otomatik olay müdahalesi için tasarlanmış kurumsal düzey siber güvenlik platformu. 11 modül, tek arayüz.</p>
                     </div>
-                    <button class="btn-hero" onclick="switchPage('port-scanner')">
-                        <i class="fas fa-rocket"></i> Port Tarayıcıyı Çalıştır
-                    </button>
+                    <div class="hero-badges">
+                        <div class="hero-badge"><i class="fas fa-check-circle"></i> 2 / 11 Modül Aktif</div>
+                        <div class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 9 Modül Geliştiriliyor</div>
+                    </div>
                 </div>
 
-                <div class="stats-grid">
+                <!-- KPI STATS GRID -->
+                <div class="stats-grid stats-grid-5">
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-blue">
-                                <i class="fas fa-cubes"></i>
-                            </div>
-                            <span class="stat-trend trend-up">%100 Hazır</span>
+                            <div class="stat-icon icon-blue"><i class="fas fa-cubes"></i></div>
+                            <span class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> Aktif</span>
+                        </div>
+                        <div class="stat-body">
+                            <h3>Toplam Modül</h3>
+                            <p class="stat-number">11</p>
+                            <p class="stat-desc">2 aktif · 9 geliştiriliyor</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon icon-emerald"><i class="fas fa-check-circle"></i></div>
+                            <span class="stat-trend trend-green">Çalışıyor</span>
                         </div>
                         <div class="stat-body">
                             <h3>Aktif Modüller</h3>
-                            <p class="stat-number">2 <span class="stat-total">/ 11</span></p>
+                            <p class="stat-number">2</p>
+                            <p class="stat-desc">Port Scanner + Packet Sniffer</p>
                         </div>
                     </div>
-
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-purple">
-                                <i class="fas fa-history"></i>
-                            </div>
+                            <div class="stat-icon icon-purple"><i class="fas fa-code-branch"></i></div>
+                            <span class="stat-trend">GitHub</span>
+                        </div>
+                        <div class="stat-body">
+                            <h3>Test Durumu</h3>
+                            <p class="stat-number text-emerald">11</p>
+                            <p class="stat-desc">Tüm testler geçti ✅</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon icon-orange"><i class="fas fa-history"></i></div>
                             <span class="stat-trend">Son İşlem</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Son Tarama Zamanı</h3>
-                            <p id="last-scan-time" class="stat-number stat-small">Henüz Yapılmadı</p>
+                            <h3>Son Port Tarama</h3>
+                            <p id="last-scan-time" class="stat-number stat-small">—</p>
+                            <p class="stat-desc">Henüz tarama yapılmadı</p>
                         </div>
                     </div>
-
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-emerald">
-                                <i class="fas fa-shield-halved"></i>
-                            </div>
-                            <span class="stat-trend trend-green">Koruma Aktif</span>
+                            <div class="stat-icon icon-emerald"><i class="fas fa-shield-halved"></i></div>
+                            <span class="stat-trend trend-green">Normal</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Tehdit Düzeyi</h3>
+                            <h3>Tehdit Seviyesi</h3>
                             <p class="stat-number text-emerald">GÜVENLİ</p>
+                            <p class="stat-desc">Aktif tehdit algılanmadı</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="quick-tools-section">
-                    <div class="section-header">
-                        <h3><i class="fas fa-bolt"></i> Hızlı Erişim Araçları</h3>
-                    </div>
-                    <div class="tools-grid">
-                        <div class="tool-card" onclick="switchPage('port-scanner')">
-                            <div class="tool-icon"><i class="fas fa-network-wired"></i></div>
-                            <div class="tool-info">
-                                <h4>Port Scanner Pro v2.0</h4>
-                                <p>Banner Grabbing ve TTL Tabanlı OS tespiti desteğiyle çok izlekli hızlı port taraması.</p>
-                            </div>
-                            <i class="fas fa-chevron-right tool-arrow"></i>
+                <!-- TWO-COLUMN LAYOUT: Modules Map + Activity -->
+                <div class="dashboard-grid">
+
+                    <!-- MODULE MAP -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-map-marked-alt"></i> Modül Haritası</h3>
+                            <span class="card-sub">Tüm CyberSec Suite bileşenleri ve geliştirme durumları</span>
                         </div>
-                        <div class="tool-card" onclick="switchPage('packet-sniffer')">
-                            <div class="tool-icon"><i class="fas fa-wave-square"></i></div>
-                            <div class="tool-info">
-                                <h4>Packet Sniffer v1.0</h4>
-                                <p>İkili (binary) IPv4, TCP, UDP ve ICMP paket ayrıştırma ve Wireshark tarzı canlı analiz.</p>
+                        <div class="module-map">
+                            <!-- ACTIVE -->
+                            <div class="module-entry active" onclick="switchPage('port-scanner')">
+                                <div class="module-icon-sm" style="background: rgba(88,166,255,0.15); color: #58a6ff;"><i class="fas fa-network-wired"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Port Scanner Pro <code>v2.0</code></span>
+                                    <span class="module-desc">Çok izlekli TCP tarama, Banner Grabbing, TTL/OS tespiti</span>
+                                </div>
+                                <span class="module-badge badge-active">Aktif</span>
                             </div>
-                            <i class="fas fa-chevron-right tool-arrow"></i>
+                            <div class="module-entry active" onclick="switchPage('packet-sniffer')">
+                                <div class="module-icon-sm" style="background: rgba(163,113,247,0.15); color: #a371f7;"><i class="fas fa-wave-square"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Packet Sniffer <code>v1.0</code></span>
+                                    <span class="module-desc">IPv4/TCP/UDP/ICMP binary analizi, Wireshark tarzı Hex/ASCII döküm</span>
+                                </div>
+                                <span class="module-badge badge-active">Aktif</span>
+                            </div>
+                            <!-- COMING SOON -->
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-globe"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">DNS Analyzer <code>v1.0</code></span>
+                                    <span class="module-desc">DNS sorguları, MX/NS/TXT kayıtları, tunneling tespiti</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-hashtag"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Hash Calculator</span>
+                                    <span class="module-desc">Cryptographic hash üretici ve parola güvenlik analizi</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-fingerprint"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">File Integrity Monitor</span>
+                                    <span class="module-desc">Dosya bütünlük ve değişiklik takip sistemi (FIM)</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-key"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Password Strength Checker</span>
+                                    <span class="module-desc">Entropi tabanlı parola güvenlik denetleyicisi</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-file-alt"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Log Analyzer</span>
+                                    <span class="module-desc">Web/Syslog analizi ve SIEM kural motoru</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-biohazard"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Threat Intelligence</span>
+                                    <span class="module-desc">VirusTotal & AbuseIPDB entegrasyonlu tehdit istihbaratı</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-brain"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">AI SOC Engine</span>
+                                    <span class="module-desc">Anomali tespiti ve tehdit önceliklendiren SOC paneli</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-bolt"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">AI Incident Response</span>
+                                    <span class="module-desc">Otomatik olay müdahale (Playbook) motoru</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                            <div class="module-entry upcoming">
+                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-bug"></i></div>
+                                <div class="module-entry-info">
+                                    <span class="module-name">Malware Analyzer</span>
+                                    <span class="module-desc">Statik PE/ELF zararlı yazılım analiz laboratuvarı</span>
+                                </div>
+                                <span class="module-badge badge-upcoming">Yakında</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Progress + Activity -->
+                    <div class="dashboard-right-col">
+                        <!-- PROGRESS CARD -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-tasks"></i> Geliştirme İlerlemesi</h3>
+                                <span class="card-sub">Toplam tamamlanma oranı</span>
+                            </div>
+                            <div class="progress-section">
+                                <div class="progress-header">
+                                    <span>Genel İlerleme</span>
+                                    <span class="progress-pct">%18</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 18%;"></div>
+                                </div>
+                                <p class="progress-sub">2 modül tamamlandı, 9 geliştirme aşamasında</p>
+
+                                <div class="roadmap-list">
+                                    <div class="roadmap-item done">
+                                        <i class="fas fa-check-circle"></i>
+                                        <div>
+                                            <strong>Port Scanner Pro v2.0</strong>
+                                            <span>Banner Grabbing · OS Detection · Multi-thread</span>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap-item done">
+                                        <i class="fas fa-check-circle"></i>
+                                        <div>
+                                            <strong>Packet Sniffer v1.0</strong>
+                                            <span>Binary Parser · Hex/ASCII Dump · Live View</span>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap-item active-road">
+                                        <i class="fas fa-code"></i>
+                                        <div>
+                                            <strong>DNS Analyzer</strong>
+                                            <span>Sıradaki modül — geliştirme başlayacak</span>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap-item pending">
+                                        <i class="far fa-circle"></i>
+                                        <div>
+                                            <strong>Hash Calculator, FIM, Password Checker…</strong>
+                                            <span>Planlandı</span>
+                                        </div>
+                                    </div>
+                                    <div class="roadmap-item pending">
+                                        <i class="far fa-circle"></i>
+                                        <div>
+                                            <strong>AI SOC Engine · AI Incident Response · Malware Analyzer</strong>
+                                            <span>İleri fazlar</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ACTIVITY FEED -->
+                        <div class="card" style="margin-top: 1.25rem;">
+                            <div class="card-header">
+                                <h3><i class="fas fa-stream"></i> Son Aktiviteler</h3>
+                                <span class="card-sub">Proje geliştirme logu</span>
+                            </div>
+                            <div class="activity-feed">
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-green"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">Packet Sniffer v1.0 yayınlandı</span>
+                                        <span class="activity-time">Bugün · Modül 2 tamamlandı</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-blue"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">Web UI Packet Sniffer sekmesi eklendi</span>
+                                        <span class="activity-time">Bugün · Canlı paket izleme, filtre, Hex modal</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-green"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">Port Scanner Pro v2.0 yayınlandı</span>
+                                        <span class="activity-time">12 Ağu 2026 · Modül 1 tamamlandı</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-purple"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">CyberPanel Web UI v1.0 başlatıldı</span>
+                                        <span class="activity-time">12 Ağu 2026 · Flask + Vercel deploy</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-purple"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">GitHub CI/CD pipeline kuruldu</span>
+                                        <span class="activity-time">12 Ağu 2026 · Pytest + GitHub Actions</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-orange"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">Sonraki hedef: DNS Analyzer</span>
+                                        <span class="activity-time">Planlanan · MX/NS/TXT + Tunneling tespiti</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- PAGE: PORT SCANNER -->
             <div id="page-port-scanner" class="page-content hidden">
