@@ -11,9 +11,11 @@ sys.path.extend([
     os.path.abspath(os.path.join(BASE_DIR, '..', 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'packet-sniffer')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'dns-analyzer')),
+    os.path.abspath(os.path.join(BASE_DIR, '..', 'hash-calculator')),
     os.path.abspath(os.path.join(BASE_DIR, 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, 'packet-sniffer')),
     os.path.abspath(os.path.join(BASE_DIR, 'dns-analyzer')),
+    os.path.abspath(os.path.join(BASE_DIR, 'hash-calculator')),
 ])
 
 try:
@@ -32,6 +34,13 @@ try:
     from dns_analyzer import analyze_dns
 except ImportError:
     def analyze_dns(target): return {"error": "DNS modülü yüklenemedi"}
+
+try:
+    from hash_calc import generate_all_hashes, identify_hash_type, verify_hash_match
+except ImportError:
+    def generate_all_hashes(text, salt=""): return {"hashes": {}}
+    def identify_hash_type(hash_str): return {"status": "error", "message": "Modül yüklenemedi"}
+    def verify_hash_match(text, target_hash, salt=""): return {"is_match": False}
 
 app = Flask(__name__)
 
@@ -81,7 +90,26 @@ def packet_sniffer():
 def dns_analyzer():
     return render_template('index.html', active_page='dns-analyzer')
 
+@app.route('/hash-calculator')
+def hash_calculator():
+    return render_template('index.html', active_page='hash-calculator')
+
 # --- API ENDPOINTS ---
+@app.route('/api/hash/generate', methods=['POST'])
+def api_hash_generate():
+    data = request.json or {}
+    text = data.get('text', '')
+    salt = data.get('salt', '')
+    result = generate_all_hashes(text, salt)
+    return jsonify(result)
+
+@app.route('/api/hash/identify', methods=['POST'])
+def api_hash_identify():
+    data = request.json or {}
+    hash_str = data.get('hash', '')
+    result = identify_hash_type(hash_str)
+    return jsonify(result)
+
 @app.route('/api/dns/analyze', methods=['POST'])
 def api_dns_analyze():
     data = request.json or {}
