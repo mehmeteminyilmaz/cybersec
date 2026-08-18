@@ -33,13 +33,13 @@
                     <li class="nav-item" data-page="port-scanner">
                         <a href="#"><i class="fas fa-network-wired"></i> <span>Port Tarayıcı</span></a>
                     </li>
+                    <li class="nav-item" data-page="packet-sniffer">
+                        <a href="#"><i class="fas fa-wave-square"></i> <span>Packet Sniffer</span></a>
+                    </li>
                 </ul>
 
                 <div class="nav-section-title">MODÜLLER</div>
                 <ul>
-                    <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-wave-square"></i> <span>Packet Sniffer</span> <span class="badge-upcoming">Yakında</span></a>
-                    </li>
                     <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-globe"></i> <span>DNS Analyzer</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="stat-body">
                             <h3>Aktif Modüller</h3>
-                            <p class="stat-number">1 <span class="stat-total">/ 11</span></p>
+                            <p class="stat-number">2 <span class="stat-total">/ 11</span></p>
                         </div>
                     </div>
 
@@ -149,6 +149,14 @@
                             <div class="tool-info">
                                 <h4>Port Scanner Pro v2.0</h4>
                                 <p>Banner Grabbing ve TTL Tabanlı OS tespiti desteğiyle çok izlekli hızlı port taraması.</p>
+                            </div>
+                            <i class="fas fa-chevron-right tool-arrow"></i>
+                        </div>
+                        <div class="tool-card" onclick="switchPage('packet-sniffer')">
+                            <div class="tool-icon"><i class="fas fa-wave-square"></i></div>
+                            <div class="tool-info">
+                                <h4>Packet Sniffer v1.0</h4>
+                                <p>İkili (binary) IPv4, TCP, UDP ve ICMP paket ayrıştırma ve Wireshark tarzı canlı analiz.</p>
                             </div>
                             <i class="fas fa-chevron-right tool-arrow"></i>
                         </div>
@@ -237,10 +245,92 @@
                     </div>
                 </div>
             </div>
+            <!-- PAGE: PACKET SNIFFER -->
+            <div id="page-packet-sniffer" class="page-content hidden">
+                <div class="card">
+                    <div class="card-header flex-between">
+                        <div>
+                            <h3><i class="fas fa-wave-square"></i> Canlı Paket Dinleyicisi (Packet Sniffer)</h3>
+                            <span class="card-sub">IP, TCP, UDP ve ICMP katmanlarında ağ trafiği analizi</span>
+                        </div>
+                        <div class="flex-center gap-2">
+                            <button id="sniffer-start-btn" class="btn-primary-gradient">
+                                <i class="fas fa-play"></i> Dinlemeyi Başlat
+                            </button>
+                            <button id="sniffer-stop-btn" class="btn-filter hidden">
+                                <i class="fas fa-stop"></i> Durdur
+                            </button>
+                            <button id="sniffer-clear-btn" class="btn-filter">
+                                <i class="fas fa-trash"></i> Temizle
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FILTER BAR -->
+                    <div class="filter-bar flex-between" style="padding: 0.8rem 1.25rem; border-bottom: 1px solid var(--border-subtle);">
+                        <div class="flex-center gap-2">
+                            <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-filter"></i> Filtrele:</span>
+                            <button class="btn-filter active" onclick="filterPackets('ALL')">Tümü</button>
+                            <button class="btn-filter" onclick="filterPackets('TCP')">TCP</button>
+                            <button class="btn-filter" onclick="filterPackets('UDP')">UDP</button>
+                            <button class="btn-filter" onclick="filterPackets('ICMP')">ICMP</button>
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">
+                            Yakalana Paket: <strong id="packet-count-badge" style="color: var(--accent-emerald);">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="sniffer-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>ZAMAN</th>
+                                    <th>PROTOKOL</th>
+                                    <th>KAYNAK IP:PORT</th>
+                                    <th>HEDEF IP:PORT</th>
+                                    <th>BİLGİ / BAYRAKLAR</th>
+                                    <th>BOYUT</th>
+                                    <th>DETAY</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sniffer-body">
+                                <tr>
+                                    <td colspan="8" class="empty-state">
+                                        <i class="fas fa-network-wired"></i>
+                                        <p>Ağ dinlemesi başlatılmadı. "Dinlemeyi Başlat" butonuna tıklayın.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PACKET INSPECTOR MODAL -->
+            <div id="packet-modal" class="modal-overlay hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-microscope"></i> Paket Detay İnceleyici (Wireshark Dump)</h3>
+                        <button class="btn-close" onclick="closeModal()">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="margin-bottom: 1rem;">
+                            <strong style="color: var(--text-heading); font-size: 0.9rem;">Hex & ASCII Dökümü:</strong>
+                        </div>
+                        <pre id="modal-hex-ascii" class="hex-ascii-box"></pre>
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
     <script>
+        let allCapturedPackets = [];
+        let currentFilter = 'ALL';
+        let isSniffing = false;
+        let sniffInterval = null;
+
         function switchPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -251,7 +341,8 @@
             
             const pageTitles = {
                 'dashboard': 'Genel Bakış',
-                'port-scanner': 'Port Tarayıcı Pro'
+                'port-scanner': 'Port Tarayıcı Pro',
+                'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)'
             };
             document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
         }
@@ -263,6 +354,115 @@
             });
         });
 
+        // --- PACKET SNIFFER LOGIC ---
+        async function fetchPackets() {
+            try {
+                const response = await fetch('/api/sniffer/packets', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ count: Math.floor(Math.random() * 3) + 1 })
+                });
+                const data = await response.json();
+                if (data.status === 'success') {
+                    data.packets.forEach(pkt => {
+                        pkt.id = allCapturedPackets.length + 1;
+                        allCapturedPackets.unshift(pkt); // En yeni paket en üste
+                    });
+                    renderPackets();
+                }
+            } catch (err) {
+                console.error("Paket alımı hatası:", err);
+            }
+        }
+
+        function renderPackets() {
+            const body = document.getElementById('sniffer-body');
+            document.getElementById('packet-count-badge').innerText = allCapturedPackets.length;
+
+            const filtered = allCapturedPackets.filter(p => {
+                if (currentFilter === 'ALL') return true;
+                return p.protocol === currentFilter;
+            });
+
+            if (filtered.length === 0) {
+                body.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <p>Filtreye uygun paket bulunamadı.</p>
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            body.innerHTML = '';
+            filtered.forEach(p => {
+                const protoClass = `proto-${p.protocol.toLowerCase()}`;
+                const row = `
+                    <tr>
+                        <td><code>#${p.id}</code></td>
+                        <td style="font-size:0.8rem; color:var(--text-muted);">${p.timestamp}</td>
+                        <td><span class="proto-pill ${protoClass}">${p.protocol}</span></td>
+                        <td><code>${p.src_ip}:${p.src_port}</code></td>
+                        <td><code>${p.dest_ip}:${p.dest_port}</code></td>
+                        <td style="font-size:0.85rem;">${p.info}</td>
+                        <td><code>${p.length} B</code></td>
+                        <td>
+                            <button class="btn-filter" style="padding:0.2rem 0.5rem;" onclick="inspectPacket(${p.id})">
+                                <i class="fas fa-eye"></i> İncele
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                body.innerHTML += row;
+            });
+        }
+
+        function filterPackets(proto) {
+            currentFilter = proto;
+            document.querySelectorAll('.filter-bar .btn-filter').forEach(b => {
+                b.classList.remove('active');
+                if (b.innerText.trim().toUpperCase() === proto || (proto === 'ALL' && b.innerText.trim() === 'Tümü')) {
+                    b.classList.add('active');
+                }
+            });
+            renderPackets();
+        }
+
+        document.getElementById('sniffer-start-btn').addEventListener('click', () => {
+            if (isSniffing) return;
+            isSniffing = true;
+            document.getElementById('sniffer-start-btn').classList.add('hidden');
+            document.getElementById('sniffer-stop-btn').classList.remove('hidden');
+            
+            fetchPackets();
+            sniffInterval = setInterval(fetchPackets, 2000);
+        });
+
+        document.getElementById('sniffer-stop-btn').addEventListener('click', () => {
+            isSniffing = false;
+            clearInterval(sniffInterval);
+            document.getElementById('sniffer-start-btn').classList.remove('hidden');
+            document.getElementById('sniffer-stop-btn').classList.add('hidden');
+        });
+
+        document.getElementById('sniffer-clear-btn').addEventListener('click', () => {
+            allCapturedPackets = [];
+            renderPackets();
+        });
+
+        function inspectPacket(pktId) {
+            const pkt = allCapturedPackets.find(p => p.id === pktId);
+            if (!pkt) return;
+            document.getElementById('modal-hex-ascii').innerText = pkt.hex_ascii;
+            document.getElementById('packet-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('packet-modal').classList.add('hidden');
+        }
+
+        // --- PORT SCANNER LOGIC ---
         document.getElementById('scan-btn').addEventListener('click', async () => {
             const target = document.getElementById('target').value;
             const start_port = document.getElementById('start_port').value;

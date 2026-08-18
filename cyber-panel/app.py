@@ -5,14 +5,25 @@ from datetime import datetime
 import sys
 import os
 
-# Port Scanner modülünü sys.path'e ekleyelim
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'port-scanner')))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.extend([
+    os.path.abspath(os.path.join(BASE_DIR, '..', 'port-scanner')),
+    os.path.abspath(os.path.join(BASE_DIR, '..', 'packet-sniffer')),
+    os.path.abspath(os.path.join(BASE_DIR, 'port-scanner')),
+    os.path.abspath(os.path.join(BASE_DIR, 'packet-sniffer')),
+])
+
 try:
     from banner_grabber import grab_banner
     from os_detector import detect_os_by_ttl
 except ImportError:
     def grab_banner(ip, port, timeout=1): return "Banner yok"
     def detect_os_by_ttl(ip): return {"os_family": "Bilinmeyen", "ttl": None}
+
+try:
+    from sniffer import generate_sample_packets
+except ImportError:
+    def generate_sample_packets(count=5): return []
 
 app = Flask(__name__)
 
@@ -54,7 +65,23 @@ def index():
 def port_scanner():
     return render_template('index.html', active_page='port-scanner')
 
+@app.route('/packet-sniffer')
+def packet_sniffer():
+    return render_template('index.html', active_page='packet-sniffer')
+
 # --- API ENDPOINTS ---
+@app.route('/api/sniffer/packets', methods=['GET', 'POST'])
+def api_sniffer_packets():
+    data = request.json or {} if request.method == 'POST' else {}
+    count = int(data.get('count', 5))
+    packets = generate_sample_packets(count=count)
+    return jsonify({
+        "status": "success",
+        "count": len(packets),
+        "packets": packets,
+        "timestamp": datetime.now().strftime("%H:%M:%S")
+    })
+
 @app.route('/api/scan', methods=['POST'])
 def api_scan():
     data = request.json or {}

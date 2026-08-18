@@ -31,7 +31,7 @@ Siber güvenlik araçlarını ve analiz modüllerini tek bir profesyonel merkezd
 | # | Modül Adı | Açıklama | Durum |
 | :-: | :--- | :--- | :-: |
 | **1** | **Port Scanner v2.0 Pro** | Çok izlekli port tarama, Banner Grabbing ve OS tespiti | ✅ Tamamlandı |
-| **2** | **Packet Sniffer** | Raw socket tabanlı canlı ağ paket dinleme ve protokol çözümleme | ⏳ Geliştiriliyor |
+| **2** | **Packet Sniffer v1.0** | Raw socket / binary unpacking tabanlı ağ paket dinleme ve Wireshark dökümü | ✅ Tamamlandı |
 | **3** | **DNS Analyzer** | DNS sorguları, MX/NS/TXT analizleri ve tunneling tespiti | 🔴 Planlandı |
 | **4** | **Hash Calculator** | Cryptographic hash üretici ve parola güvenlik analizi | 🔴 Planlandı |
 | **5** | **File Integrity Monitor** | Bütünlük ve dosya değişiklik takip sistemi (FIM) | 🔴 Planlandı |
