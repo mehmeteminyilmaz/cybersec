@@ -116,8 +116,8 @@
                         <p>Etik hacklama, ağ analizi, tehdit istihbaratı ve otomatik olay müdahalesi için tasarlanmış kurumsal düzey siber güvenlik platformu. 11 modül, tek arayüz.</p>
                     </div>
                     <div class="hero-badges">
-                        <div class="hero-badge"><i class="fas fa-check-circle"></i> 4 / 11 Modül Aktif</div>
-                        <div class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 7 Modül Geliştiriliyor</div>
+                        <div id="hero-badge-active" class="hero-badge"><i class="fas fa-check-circle"></i> 4 / 11 Modül Aktif</div>
+                        <div id="hero-badge-upcoming" class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 7 Modül Geliştiriliyor</div>
                     </div>
                 </div>
 
@@ -126,12 +126,12 @@
                     <div class="stat-card">
                         <div class="stat-top">
                             <div class="stat-icon icon-blue"><i class="fas fa-cubes"></i></div>
-                            <span class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> %36 Tamamlandı</span>
+                            <span id="stat-progress-pct" class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> %36 Tamamlandı</span>
                         </div>
                         <div class="stat-body">
                             <h3>Toplam Modül</h3>
                             <p class="stat-number">11</p>
-                            <p class="stat-desc">4 aktif · 7 geliştiriliyor</p>
+                            <p id="stat-total-desc" class="stat-desc">4 aktif · 7 geliştiriliyor</p>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -141,7 +141,7 @@
                         </div>
                         <div class="stat-body">
                             <h3>Aktif Modüller</h3>
-                            <p class="stat-number">4</p>
+                            <p id="stat-active-num" class="stat-number">4</p>
                             <p class="stat-desc">Scanner + Sniffer + DNS + Hash</p>
                         </div>
                     </div>
@@ -283,12 +283,12 @@
                             <div class="progress-section">
                                 <div class="progress-header">
                                     <span>Genel İlerleme</span>
-                                    <span class="progress-pct">%36</span>
+                                    <span id="progress-pct-val" class="progress-pct">%36</span>
                                 </div>
                                 <div class="progress-track">
-                                    <div class="progress-fill" style="width: 36%;"></div>
+                                    <div id="progress-fill-bar" class="progress-fill" style="width: 36%;"></div>
                                 </div>
-                                <p class="progress-sub">4 modül tamamlandı, 7 geliştirme aşamasında</p>
+                                <p id="progress-sub-text" class="progress-sub">4 modül tamamlandı, 7 geliştirme aşamasında</p>
 
                                 <div class="roadmap-list">
                                     <div class="roadmap-item done">
@@ -746,6 +746,42 @@
             if (startBtn) startBtn.classList.remove('hidden');
             if (stopBtn) stopBtn.classList.add('hidden');
         }
+
+        // --- DYNAMIC DASHBOARD METRICS CALCULATOR ---
+        function updateDashboardMetrics() {
+            const activeEntries = document.querySelectorAll('.module-entry.active').length;
+            const totalEntries = document.querySelectorAll('.module-entry').length;
+            const remainingEntries = totalEntries - activeEntries;
+            const pct = Math.round((activeEntries / totalEntries) * 100);
+
+            const activeNumElem = document.getElementById('stat-active-num');
+            if (activeNumElem) activeNumElem.innerText = activeEntries;
+
+            const totalDescElem = document.getElementById('stat-total-desc');
+            if (totalDescElem) totalDescElem.innerText = `${activeEntries} aktif · ${remainingEntries} geliştiriliyor`;
+
+            const statPctElem = document.getElementById('stat-progress-pct');
+            if (statPctElem) statPctElem.innerHTML = `<i class="fas fa-arrow-up"></i> %${pct} Tamamlandı`;
+
+            const heroActive = document.getElementById('hero-badge-active');
+            if (heroActive) heroActive.innerHTML = `<i class="fas fa-check-circle"></i> ${activeEntries} / ${totalEntries} Modül Aktif`;
+
+            const heroUpcoming = document.getElementById('hero-badge-upcoming');
+            if (heroUpcoming) heroUpcoming.innerHTML = `<i class="fas fa-clock"></i> ${remainingEntries} Modül Geliştiriliyor`;
+
+            const progressPct = document.getElementById('progress-pct-val');
+            if (progressPct) progressPct.innerText = `%${pct}`;
+
+            const progressFill = document.getElementById('progress-fill-bar');
+            if (progressFill) progressFill.style.width = `${pct}%`;
+
+            const progressSub = document.getElementById('progress-sub-text');
+            if (progressSub) progressSub.innerText = `${activeEntries} modül tamamlandı, ${remainingEntries} geliştirme aşamasında`;
+        }
+
+        // Sayfa yüklendiğinde otomatik metrikleri hesapla
+        document.addEventListener('DOMContentLoaded', updateDashboardMetrics);
+        updateDashboardMetrics();
 
         function switchPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
