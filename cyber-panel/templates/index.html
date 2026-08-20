@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberPanel | Central Security Suite</title>
+    <meta name="description" content="Mehmet Emin Yılmaz - Siber Güvenlik Öğrenme Yolculuğu ve Uygulamalı Proje Portföyü. TCP/IP, Kriptografi, Ağ Analizi ve DNS Güvenliği konularında geliştirilen canlı siber güvenlik araçları.">
+    <title>Mehmet Emin Yılmaz | Siber Güvenlik Portföyü</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
                     </div>
                     <div class="brand-text">
                         <h2>Cyber<span>Sec</span></h2>
-                        <span class="version-tag">PANEL v1.0</span>
+                        <span class="version-tag">PORTFÖY v1.0</span>
                     </div>
                 </div>
             </div>
@@ -108,119 +109,186 @@
                 </div>
             </header>
 
-            <!-- PAGE: DASHBOARD -->
+            <!-- PAGE: DASHBOARD / PORTFOLIO HUB -->
             <div id="page-dashboard" class="page-content">
 
-                <!-- HERO BANNER -->
-                <div class="hero-banner">
+                <!-- HERO: LEARNING JOURNEY NARRATIVE -->
+                <div class="hero-banner portfolio-hero">
                     <div class="hero-text">
-                        <div class="hero-eyebrow"><i class="fas fa-shield-halved"></i> CyberSec Suite — Operasyon Merkezi</div>
-                        <h2>Siber Güvenlik Araçları <span class="hero-highlight">Tek Çatı Altında</span></h2>
-                        <p>Etik hacklama, ağ analizi, tehdit istihbaratı ve otomatik olay müdahalesi için tasarlanmış kurumsal düzey siber güvenlik platformu. 11 modül, tek arayüz.</p>
+                        <div class="hero-eyebrow"><i class="fas fa-graduation-cap"></i> Siber Güvenlik Öğrenme Yolculuğu</div>
+                        <h2>Ağ Güvenliği, Kriptografi ve
+                            <span class="hero-highlight">Uygulamalı Projeler</span>
+                        </h2>
+                        <p>Bu platform; ağ analizi, kriptografik algoritmalar, DNS güvenliği ve zafiyet tespiti konularında öğrendiklerimi teoriden koda dökerek inşa ettiğim canlı bir siber güvenlik proje portföyüdür. Her modül bağımsız olarak geliştirilmiş, testleri yazılmış ve üretime alınmıştır.</p>
+                        <div class="hero-tech-tags">
+                            <span class="tech-tag">Python 3.11</span>
+                            <span class="tech-tag">Flask REST API</span>
+                            <span class="tech-tag">TCP/IP Stack</span>
+                            <span class="tech-tag">Kriptografi</span>
+                            <span class="tech-tag">DNS Protokolü</span>
+                            <span class="tech-tag">Pytest CI/CD</span>
+                        </div>
                     </div>
                     <div class="hero-badges">
-                        <div id="hero-badge-active" class="hero-badge"><i class="fas fa-check-circle"></i> 4 / 11 Modül Aktif</div>
-                        <div id="hero-badge-upcoming" class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 7 Modül Geliştiriliyor</div>
+                        <div id="hero-badge-active" class="hero-badge"><i class="fas fa-check-circle"></i> 4 / 11 Proje Tamamlandı</div>
+                        <div id="hero-badge-upcoming" class="hero-badge hero-badge-warn"><i class="fas fa-clock"></i> 7 Proje Devam Ediyor</div>
+                        <a href="https://github.com/mehmeteminyilmaz/cybersec" target="_blank" class="hero-badge hero-badge-github">
+                            <i class="fab fa-github"></i> GitHub'da Görüntüle
+                        </a>
                     </div>
                 </div>
 
-                <!-- KPI STATS GRID -->
+                <!-- MASTERED CONCEPTS SECTION -->
+                <div class="section-label"><i class="fas fa-brain"></i> Öğrenilen Siber Güvenlik Konseptleri</div>
+                <div class="concepts-grid">
+                    <div class="concept-card">
+                        <div class="concept-icon" style="background: rgba(88,166,255,0.12); color: #58a6ff;">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="concept-body">
+                            <h4>Ağ Protokolleri & Socket Programlama</h4>
+                            <p>TCP 3-Way Handshake, port durumu tespiti, multi-threading ile paralel tarama, TTL değerine göre işletim sistemi tespiti ve servis banner yakalama.</p>
+                            <div class="concept-tags">
+                                <span>TCP/IP</span><span>Socket</span><span>Multi-thread</span><span>Banner Grabbing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon" style="background: rgba(163,113,247,0.12); color: #a371f7;">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <div class="concept-body">
+                            <h4>Paket Analizi & Binary Unpacking</h4>
+                            <p>Raw socket ile OSI katman 3 ve 4 paket yakalama, Python <code>struct</code> modülü ile IP/TCP/UDP/ICMP header binary ayrıştırma ve Hex/ASCII dökümü.</p>
+                            <div class="concept-tags">
+                                <span>Raw Socket</span><span>Binary Parsing</span><span>OSI Modeli</span><span>Wireshark</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon" style="background: rgba(63,185,80,0.12); color: #3fb950;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="concept-body">
+                            <h4>DNS Güvenliği & Anomali Tespiti</h4>
+                            <p>DNS protokolü, A/MX/NS/TXT kayıt sorgulama, Shannon Entropi algoritması ile DNS Tunneling (DNS üzerinden veri sızdırma) anomali tespiti.</p>
+                            <div class="concept-tags">
+                                <span>DNS Protokolü</span><span>Shannon Entropi</span><span>Tunneling Tespiti</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-icon" style="background: rgba(210,153,34,0.12); color: #d29922;">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="concept-body">
+                            <h4>Kriptografi & Parola Güvenliği</h4>
+                            <p>MD5, SHA-1/256/512, NTLM hash fonksiyonları, Salting (tuzlama) ile Rainbow Table saldırılarına karşı koruma ve hash identifier algoritması.</p>
+                            <div class="concept-tags">
+                                <span>Hash Fonksiyonları</span><span>Salting</span><span>Rainbow Table</span><span>NTLM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECTS / KPI STATS -->
+                <div class="section-label" style="margin-top: 2rem;"><i class="fas fa-folder-open"></i> Proje &amp; Geliştirme İstatistikleri</div>
                 <div class="stats-grid stats-grid-4">
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-blue"><i class="fas fa-cubes"></i></div>
+                            <div class="stat-icon icon-blue"><i class="fas fa-code"></i></div>
                             <span id="stat-progress-pct" class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> %36 Tamamlandı</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Toplam Modül</h3>
+                            <h3>Toplam Proje</h3>
                             <p class="stat-number">11</p>
                             <p id="stat-total-desc" class="stat-desc">4 aktif · 7 geliştiriliyor</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-emerald"><i class="fas fa-check-circle"></i></div>
+                            <div class="stat-icon icon-emerald"><i class="fas fa-check-double"></i></div>
                             <span class="stat-trend trend-green">Çalışıyor</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Aktif Modüller</h3>
+                            <h3>Canlı Araçlar</h3>
                             <p id="stat-active-num" class="stat-number">4</p>
-                            <p class="stat-desc">Scanner + Sniffer + DNS + Hash</p>
+                            <p class="stat-desc">Gerçek API + Web UI entegre</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-purple"><i class="fas fa-code-branch"></i></div>
-                            <span class="stat-trend">CI/CD</span>
+                            <div class="stat-icon icon-purple"><i class="fas fa-flask"></i></div>
+                            <span class="stat-trend">Pytest CI/CD</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Birim Testleri</h3>
+                            <h3>Birim Testi</h3>
                             <p class="stat-number text-emerald">20</p>
                             <p class="stat-desc">Tüm testler geçti ✅</p>
                         </div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-top">
-                            <div class="stat-icon icon-orange"><i class="fas fa-server"></i></div>
-                            <span class="stat-trend">Altyapı</span>
+                            <div class="stat-icon icon-orange"><i class="fas fa-brain"></i></div>
+                            <span class="stat-trend">Teoriden Koda</span>
                         </div>
                         <div class="stat-body">
-                            <h3>Sistem Mimarisi</h3>
-                            <p class="stat-number stat-small">v1.0 Pro</p>
-                            <p class="stat-desc">Python 3.11 + Flask REST API</p>
+                            <h3>Öğrenilen Konsept</h3>
+                            <p class="stat-number stat-small">4+</p>
+                            <p class="stat-desc">Ağ, Kripto, DNS, Binary</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- TWO-COLUMN LAYOUT: Modules Map + Activity -->
+                <!-- TWO-COLUMN LAYOUT: Project Portfolio + Progress -->
                 <div class="dashboard-grid">
 
-                    <!-- MODULE MAP -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-map-marked-alt"></i> Modül Haritası</h3>
-                            <span class="card-sub">Tüm CyberSec Suite bileşenleri ve geliştirme durumları</span>
+                    <!-- LEFT: PROJECT PORTFOLIO CARDS -->
+                    <div class="card" style="padding: 0;">
+                        <div class="card-header" style="padding: 1.25rem 1.25rem 0;">
+                            <h3><i class="fas fa-briefcase"></i> Proje Portföyü</h3>
+                            <span class="card-sub">Tıklayın, canlı araca geçin</span>
                         </div>
                         <div class="module-map">
-                            <!-- ACTIVE -->
+                            <!-- ACTIVE PROJECTS -->
                             <div class="module-entry active" onclick="switchPage('port-scanner')">
                                 <div class="module-icon-sm" style="background: rgba(88,166,255,0.15); color: #58a6ff;"><i class="fas fa-network-wired"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">Port Scanner Pro <code>v2.0</code></span>
-                                    <span class="module-desc">Çok izlekli TCP tarama, Banner Grabbing, TTL/OS tespiti</span>
+                                    <span class="module-desc">TCP/IP · Multi-thread · Banner Grabbing · TTL/OS Tespiti</span>
                                 </div>
-                                <span class="module-badge badge-active">Aktif</span>
+                                <span class="module-badge badge-active">Canlı</span>
                             </div>
                             <div class="module-entry active" onclick="switchPage('packet-sniffer')">
                                 <div class="module-icon-sm" style="background: rgba(163,113,247,0.15); color: #a371f7;"><i class="fas fa-wave-square"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">Packet Sniffer <code>v1.0</code></span>
-                                    <span class="module-desc">IPv4/TCP/UDP/ICMP binary analizi, Wireshark tarzı Hex/ASCII döküm</span>
+                                    <span class="module-desc">Raw Socket · Binary Parsing · Hex/ASCII Dökümü · IPv4 Analizi</span>
                                 </div>
-                                <span class="module-badge badge-active">Aktif</span>
+                                <span class="module-badge badge-active">Canlı</span>
                             </div>
                             <div class="module-entry active" onclick="switchPage('dns-analyzer')">
                                 <div class="module-icon-sm" style="background: rgba(63,185,80,0.15); color: #3fb950;"><i class="fas fa-globe"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">DNS Analyzer <code>v1.0</code></span>
-                                    <span class="module-desc">DNS sorguları, MX/NS/TXT kayıtları, Shannon Entropi Tunneling tespiti</span>
+                                    <span class="module-desc">Shannon Entropi · Tunneling Tespiti · A/MX/NS/TXT Kayıtları</span>
                                 </div>
-                                <span class="module-badge badge-active">Aktif</span>
+                                <span class="module-badge badge-active">Canlı</span>
                             </div>
                             <div class="module-entry active" onclick="switchPage('hash-calculator')">
                                 <div class="module-icon-sm" style="background: rgba(210,153,34,0.15); color: #d29922;"><i class="fas fa-hashtag"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">Hash Calculator <code>v1.0</code></span>
-                                    <span class="module-desc">Kriptografik özet üretici, Salting ve Otomatik Hash Identifier</span>
+                                    <span class="module-desc">MD5 / SHA-256 / SHA-512 · Salting · Otomatik Hash Identifier</span>
                                 </div>
-                                <span class="module-badge badge-active">Aktif</span>
+                                <span class="module-badge badge-active">Canlı</span>
                             </div>
-                            <!-- COMING SOON -->
+                            <!-- UPCOMING PROJECTS -->
                             <div class="module-entry upcoming">
                                 <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-fingerprint"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">File Integrity Monitor</span>
-                                    <span class="module-desc">Dosya bütünlük ve değişiklik takip sistemi (FIM)</span>
+                                    <span class="module-desc">SHA-256 hash tabanlı dosya bütünlük ve değişiklik tespiti</span>
                                 </div>
                                 <span class="module-badge badge-upcoming">Yakında</span>
                             </div>
@@ -244,7 +312,7 @@
                                 <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-biohazard"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">Threat Intelligence</span>
-                                    <span class="module-desc">VirusTotal & AbuseIPDB entegrasyonlu tehdit istihbaratı</span>
+                                    <span class="module-desc">VirusTotal &amp; AbuseIPDB entegrasyonlu tehdit istihbaratı</span>
                                 </div>
                                 <span class="module-badge badge-upcoming">Yakında</span>
                             </div>
@@ -268,20 +336,20 @@
                                 <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-bug"></i></div>
                                 <div class="module-entry-info">
                                     <span class="module-name">Malware Analyzer</span>
-                                    <span class="module-desc">Statik PE/ELF zararlı yazılım analiz laboratuvarı</span>
+                                    <span class="module-desc">Statik PE/ELF zararlı yazılım analiz labortuvarı</span>
                                 </div>
                                 <span class="module-badge badge-upcoming">Yakında</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RIGHT COLUMN: Progress + Activity -->
+                    <!-- RIGHT COLUMN: Learning Progress + Activity -->
                     <div class="dashboard-right-col">
                         <!-- PROGRESS CARD -->
                         <div class="card">
                             <div class="card-header">
-                                <h3><i class="fas fa-tasks"></i> Geliştirme İlerlemesi</h3>
-                                <span class="card-sub">Toplam tamamlanma oranı</span>
+                                <h3><i class="fas fa-route"></i> Öğrenme Yol Haritası</h3>
+                                <span class="card-sub">Geliştirme ve öğrenme ilerleme oranı</span>
                             </div>
                             <div class="progress-section">
                                 <div class="progress-header">
@@ -291,42 +359,42 @@
                                 <div class="progress-track">
                                     <div id="progress-fill-bar" class="progress-fill" style="width: 36%;"></div>
                                 </div>
-                                <p id="progress-sub-text" class="progress-sub">4 modül tamamlandı, 7 geliştirme aşamasında</p>
+                                <p id="progress-sub-text" class="progress-sub">4 proje tamamlandı, 7 geliştirme aşamasında</p>
 
                                 <div class="roadmap-list">
                                     <div class="roadmap-item done">
                                         <i class="fas fa-check-circle"></i>
                                         <div>
                                             <strong>Port Scanner Pro v2.0</strong>
-                                            <span>Banner Grabbing · OS Detection · Multi-thread</span>
+                                            <span>Ağ protokolleri, socket programlama, OS parmak izi</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item done">
                                         <i class="fas fa-check-circle"></i>
                                         <div>
                                             <strong>Packet Sniffer v1.0</strong>
-                                            <span>Binary Parser · Hex/ASCII Dump · Live View</span>
+                                            <span>Binary unpacking, IP/TCP header ayrıştırma</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item done">
                                         <i class="fas fa-check-circle"></i>
                                         <div>
                                             <strong>DNS Analyzer v1.0</strong>
-                                            <span>DNS Resolver · Shannon Entropy Tunneling</span>
+                                            <span>Shannon Entropi, DNS tunneling anomali skoru</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item done">
                                         <i class="fas fa-check-circle"></i>
                                         <div>
                                             <strong>Hash Calculator v1.0</strong>
-                                            <span>MD5/SHA-256/SHA-512 · Salting · Hash Identifier</span>
+                                            <span>Kriptografik hash, salting, hash identifier</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item active-road">
                                         <i class="fas fa-code"></i>
                                         <div>
                                             <strong>File Integrity Monitor (FIM)</strong>
-                                            <span>Sıradaki modül — SHA-256 bütünlük kontrolü</span>
+                                            <span>Sıradaki — SHA-256 tabanlı bütünlük kontrolü</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item pending">
@@ -339,7 +407,7 @@
                                     <div class="roadmap-item pending">
                                         <i class="far fa-circle"></i>
                                         <div>
-                                            <strong>AI SOC Engine · AI Incident Response · Malware Analyzer</strong>
+                                            <strong>AI SOC Engine · Incident Response · Malware</strong>
                                             <span>İleri fazlar</span>
                                         </div>
                                     </div>
@@ -350,49 +418,49 @@
                         <!-- ACTIVITY FEED -->
                         <div class="card" style="margin-top: 1.25rem;">
                             <div class="card-header">
-                                <h3><i class="fas fa-stream"></i> Son Aktiviteler</h3>
-                                <span class="card-sub">Proje geliştirme logu</span>
+                                <h3><i class="fas fa-stream"></i> Geliştirme Günlüğü</h3>
+                                <span class="card-sub">Proje geliştirme ve öğrenme zamançizelgesi</span>
                             </div>
                             <div class="activity-feed">
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">Hash Calculator v1.0 yayınlandı</span>
-                                        <span class="activity-time">18 Ağu 2026 · Modül 4 tamamlandı (Salting & Hash Identifier)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Kriptografi &amp; Rainbow Table koruması öğrenildi</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">DNS Analyzer v1.0 yayınlandı</span>
-                                        <span class="activity-time">18 Ağu 2026 · Modül 3 tamamlandı (Shannon Entropy + Tunneling)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Shannon Entropi &amp; Tunneling tespiti öğrenildi</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">Packet Sniffer v1.0 yayınlandı</span>
-                                        <span class="activity-time">18 Ağu 2026 · Modül 2 tamamlandı (Binary Parser & Hex/ASCII)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Binary unpacking &amp; OSI katmanları öğrenildi</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
-                                    <div class="activity-dot dot-green"></div>
+                                    <div class="activity-dot dot-blue"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">Port Scanner Pro v2.0 yayınlandı</span>
-                                        <span class="activity-time">12 Ağu 2026 · Modül 1 tamamlandı</span>
+                                        <span class="activity-time">12 Ağu 2026 · TCP/IP protokolü &amp; socket prog. öğrenildi</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-purple"></div>
                                     <div class="activity-content">
-                                        <span class="activity-title">CyberPanel Web UI v1.0 başlatıldı</span>
-                                        <span class="activity-time">12 Ağu 2026 · Standalone Flask + Vercel</span>
+                                        <span class="activity-title">CyberSec Portfolio Hub başlatıldı</span>
+                                        <span class="activity-time">12 Ağu 2026 · Flask + Vercel deploy mimarisi</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-orange"></div>
                                     <div class="activity-content">
-                                        <span class="activity-title">Sonraki hedef: File Integrity Monitor (FIM)</span>
+                                        <span class="activity-title">Sonraki: File Integrity Monitor (FIM)</span>
                                         <span class="activity-time">Planlanan · SHA-256 hash tabanlı dosya bütünlük tespiti</span>
                                     </div>
                                 </div>
@@ -404,7 +472,39 @@
 
 
             <!-- PAGE: PORT SCANNER -->
+
+
+
+
+            <!-- PAGE: PORT SCANNER -->
             <div id="page-port-scanner" class="page-content hidden">
+
+                <!-- LEARNING CONCEPT CARD -->
+                <div class="learning-card">
+                    <div class="learning-card-header">
+                        <div class="learning-badge"><i class="fas fa-graduation-cap"></i> Öğrenilen Konsept</div>
+                        <span class="learning-tag">Proje #1</span>
+                    </div>
+                    <div class="learning-content">
+                        <div class="learning-col">
+                            <h4><i class="fas fa-book-open"></i> Siber Güvenlik Teorisi</h4>
+                            <p><strong>TCP Port Tarama (SYN Scan):</strong> Her port’a TCP SYN paketi gönderilir. SYN-ACK cevabı alınırsa port açıktır. RST veya cevapsızlık kapalı anlamına gelir. Bu, Nmap’in kullandığı temel keif tekniğidir.</p>
+                            <p><strong>Banner Grabbing:</strong> Açık porta bağlanarak servis versiyon bilgisi (HTTP Server, SSH banner vb.) okunur. Zafiyet tespitinde kullanılır.</p>
+                            <p><strong>TTL tabanlı OS Tespiti:</strong> IP paketlerindeki TTL değeri işletim sistemine göre değişir: Linux~64, Windows~128, Cisco~255.</p>
+                        </div>
+                        <div class="learning-col">
+                            <h4><i class="fas fa-code"></i> Nasıl Kodladım?</h4>
+                            <p>Python <code>socket</code> modülü ile her porta TCP bağlantı deneniyor. <code>concurrent.futures.ThreadPoolExecutor</code> ile çok iş parçacıklı paralel tarama sağlandı. <code>socket.recv(1024)</code> ile banner yakalanarak servis tespiti yapılıyor.</p>
+                            <div class="tech-stack-row">
+                                <span class="tech-badge" style="--c:#58a6ff">Python socket</span>
+                                <span class="tech-badge" style="--c:#a371f7">ThreadPoolExecutor</span>
+                                <span class="tech-badge" style="--c:#3fb950">TTL Analizi</span>
+                                <span class="tech-badge" style="--c:#d29922">Banner Grabbing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="scan-grid">
                     <div class="card scan-config-card">
                         <div class="card-header">
@@ -486,6 +586,33 @@
             </div>
             <!-- PAGE: PACKET SNIFFER -->
             <div id="page-packet-sniffer" class="page-content hidden">
+
+                <!-- LEARNING CONCEPT CARD -->
+                <div class="learning-card">
+                    <div class="learning-card-header">
+                        <div class="learning-badge"><i class="fas fa-graduation-cap"></i> Öğrenilen Konsept</div>
+                        <span class="learning-tag">Proje #2</span>
+                    </div>
+                    <div class="learning-content">
+                        <div class="learning-col">
+                            <h4><i class="fas fa-book-open"></i> Siber Güvenlik Teorisi</h4>
+                            <p><strong>Paket Yakalama (Packet Sniffing):</strong> Ağ ara yüzüne gelen tüm IP paketlerini yakalamaktır. Promiscuous mode ile kendi paketleri dışındaki paketler de okunabilir. Wireshark aynı prensibi kullanır.</p>
+                            <p><strong>OSI Modeli Katman Analizi:</strong> IP header (Katman 3) <code>struct.unpack</code> ile ayrıştırılır. TCP/UDP/ICMP header (Katman 4) payload’dan parse edilir. Her alanda version, TTL, flags, checksum bilgileri elde edilir.</p>
+                            <p><strong>Hex/ASCII Dökümü:</strong> Payload byte dizisi 16’lık gruplara bölünerek hem hex hem ASCII gösterimi yapılır. Yazdırılamaz karakterler ‘.’ ile maskelenir.</p>
+                        </div>
+                        <div class="learning-col">
+                            <h4><i class="fas fa-code"></i> Nasıl Kodladım?</h4>
+                            <p>Python <code>struct</code> modülü ile binary veri ayrıştırması yapıldı. <code>struct.unpack('!BBHHHBBH4s4s', raw[:20])</code> ile IP header büb alanlarına ayrıştırıldı. Vercel kapatıklarından dolayı örnek paket üretici ile demo sağlanmıştır.</p>
+                            <div class="tech-stack-row">
+                                <span class="tech-badge" style="--c:#a371f7">struct.unpack</span>
+                                <span class="tech-badge" style="--c:#58a6ff">Raw Socket</span>
+                                <span class="tech-badge" style="--c:#3fb950">OSI Layer 3/4</span>
+                                <span class="tech-badge" style="--c:#f778ba">Hex/ASCII</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-header flex-between">
                         <div>
@@ -548,6 +675,32 @@
 
             <!-- PAGE: DNS ANALYZER -->
             <div id="page-dns-analyzer" class="page-content hidden">
+
+                <!-- LEARNING CONCEPT CARD -->
+                <div class="learning-card">
+                    <div class="learning-card-header">
+                        <div class="learning-badge"><i class="fas fa-graduation-cap"></i> Öğrenilen Konsept</div>
+                        <span class="learning-tag">Proje #3</span>
+                    </div>
+                    <div class="learning-content">
+                        <div class="learning-col">
+                            <h4><i class="fas fa-book-open"></i> Siber Güvenlik Teorisi</h4>
+                            <p><strong>DNS Tunneling (Veri Sızdırma):</strong> Saldırganlar DNS sorgularının içine şifreli/base64 veri gömerek firewall’ları atlatarak veri sızdırabilir. Ağda çok sayıda DNS sorgusu veya anormal uzun subdomain isimler bunu ele verir.</p>
+                            <p><strong>Shannon Entropi:</strong> Bilgi teorisinde rastgelelik ölçüsüdür. Metin ne kadar rastgele ve şifreli görünürse entropi değeri (0-5) o kadar yüksektir. Normal subdomain’ların entropisi düşükken, base64 payload’lar çok yüksek entropi gösterir.</p>
+                        </div>
+                        <div class="learning-col">
+                            <h4><i class="fas fa-code"></i> Nasıl Kodladım?</h4>
+                            <p>Python <code>socket.gethostbyname()</code> ile A kayıtları, <code>dns.resolver</code> ile MX/NS/TXT kayıtları sorgulandı. Shannon entropi formülü: <code>H = -Σ(p × log₂p)</code> ile <code>math.log2()</code> kullanılarak subdomain analizi yapılıyor ve risk skoru hesaplanıyor.</p>
+                            <div class="tech-stack-row">
+                                <span class="tech-badge" style="--c:#3fb950">socket.getaddrinfo</span>
+                                <span class="tech-badge" style="--c:#58a6ff">dns.resolver</span>
+                                <span class="tech-badge" style="--c:#a371f7">Shannon Entropi</span>
+                                <span class="tech-badge" style="--c:#d29922">math.log2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="card scan-config-card" style="margin-bottom: 1.25rem;">
                     <div class="card-header">
                         <h3><i class="fas fa-globe"></i> DNS Sorgulama ve Anomali Analizörü</h3>
@@ -640,6 +793,33 @@
 
             <!-- PAGE: HASH CALCULATOR -->
             <div id="page-hash-calculator" class="page-content hidden">
+
+                <!-- LEARNING CONCEPT CARD -->
+                <div class="learning-card">
+                    <div class="learning-card-header">
+                        <div class="learning-badge"><i class="fas fa-graduation-cap"></i> Öğrenilen Konsept</div>
+                        <span class="learning-tag">Proje #4</span>
+                    </div>
+                    <div class="learning-content">
+                        <div class="learning-col">
+                            <h4><i class="fas fa-book-open"></i> Siber Güvenlik Teorisi</h4>
+                            <p><strong>Kriptografik Hash Fonksiyonları:</strong> Bir girdiyi sabit uzunluklu, geri döndürülemez özete dönüştürür. Aynı girdiden her zaman aynı özet üretilir. MD5 (128-bit) kırılmıştır, SHA-256 günümüzde standarttır.</p>
+                            <p><strong>Salting (Tuzlama):</strong> Parola hashlemeden önce rastgele veri eklenerek Rainbow Table saldırıları engellenir. Aynı parola farklı tuzlarla farklı hash üretir.</p>
+                            <p><strong>NTLM Hash:</strong> Windows sistemlerin SAM veritabanında kullandığı MD4 tabanlı parola hash formatıdır. Pass-the-Hash saldırılarında hedef alınır.</p>
+                        </div>
+                        <div class="learning-col">
+                            <h4><i class="fas fa-code"></i> Nasıl Kodladım?</h4>
+                            <p>Python <code>hashlib</code> modülü ile MD5, SHA-1/224/256/384/512 üretimi yapıldı. NTLM için <code>hashlib.new('md4', text.encode('utf-16le'))</code> kullanıldı. Hash identifier algoritması uzunluk + regex + önek desen eşleştirmesi ile çalışır.</p>
+                            <div class="tech-stack-row">
+                                <span class="tech-badge" style="--c:#d29922">hashlib</span>
+                                <span class="tech-badge" style="--c:#58a6ff">SHA-256 / SHA-512</span>
+                                <span class="tech-badge" style="--c:#f778ba">NTLM / MD4</span>
+                                <span class="tech-badge" style="--c:#3fb950">Salting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="dashboard-grid">
                     <!-- LEFT COLUMN: GENERATE HASHES -->
                     <div class="card">
