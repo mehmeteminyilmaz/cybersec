@@ -77,7 +77,7 @@ def analyze_dns_tunneling(domain):
 
     # Risk Seviyesi Belirleme
     if risk_score >= 65:
-        risk_level = "YÜKSEK (KIRITIK)"
+        risk_level = "YÜKSEK (KRİTİK)"
         status_color = "danger"
     elif risk_score >= 35:
         risk_level = "ORTA (ŞÜPHELİ)"

@@ -358,21 +358,21 @@
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">Hash Calculator v1.0 yayınlandı</span>
-                                        <span class="activity-time">Bugün · Modül 4 tamamlandı (Salting & Identifier)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Modül 4 tamamlandı (Salting & Hash Identifier)</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">DNS Analyzer v1.0 yayınlandı</span>
-                                        <span class="activity-time">Bugün · Modül 3 tamamlandı (Tunneling Anomali)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Modül 3 tamamlandı (Shannon Entropy + Tunneling)</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
                                         <span class="activity-title">Packet Sniffer v1.0 yayınlandı</span>
-                                        <span class="activity-time">Bugün · Modül 2 tamamlandı (Binary Parser & Hex)</span>
+                                        <span class="activity-time">18 Ağu 2026 · Modül 2 tamamlandı (Binary Parser & Hex/ASCII)</span>
                                     </div>
                                 </div>
                                 <div class="activity-item">
@@ -392,8 +392,8 @@
                                 <div class="activity-item">
                                     <div class="activity-dot dot-orange"></div>
                                     <div class="activity-content">
-                                        <span class="activity-title">Sonraki hedef: File Integrity Monitor</span>
-                                        <span class="activity-time">Planlanan · SHA-256 FIM Bütünlük Tespiti</span>
+                                        <span class="activity-title">Sonraki hedef: File Integrity Monitor (FIM)</span>
+                                        <span class="activity-time">Planlanan · SHA-256 hash tabanlı dosya bütünlük tespiti</span>
                                     </div>
                                 </div>
                             </div>
@@ -1130,7 +1130,8 @@
                     
                     targetInfo.classList.remove('hidden');
                     summary.classList.remove('hidden');
-                    document.getElementById('last-scan-time').innerText = data.timestamp;
+                    const lastScanElem = document.getElementById('last-scan-time');
+                    if (lastScanElem) lastScanElem.innerText = data.timestamp;
 
                     if (data.results.length === 0) {
                         resultsBody.innerHTML = `
