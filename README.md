@@ -1,4 +1,4 @@
-# 🛡️ Siber Güvenlik Çalışmalarım & Uygulamalı Projelerim
+#  Siber Güvenlik Çalışmalarım & Uygulamalı Projelerim
 
 Siber güvenlik alanında kendimi geliştirirken öğrendiğim teorik konuları (Ağ protokolleri, paket ayrıştırma, DNS güvenliği, kriptografi vb.) pekiştirmek için sıfırdan Python ile geliştirdiğim araçlar ve bunların tek bir arayüzden test edilebildiği web paneli.
 
@@ -6,7 +6,7 @@ Siber güvenlik alanında kendimi geliştirirken öğrendiğim teorik konuları 
 
 ---
 
-## 🛠️ Neler Geliştirdim ve Neler Öğrendim?
+##  Neler Geliştirdim ve Neler Öğrendim?
 
 ### 1. Port Scanner (`/port-scanner`)
 * **Öğrendiklerim:** TCP 3-way handshake mantığı, socket programlama, soket seviyesinde zaman aşımı yönetimi.
@@ -48,7 +48,7 @@ Siber güvenlik alanında kendimi geliştirirken öğrendiğim teorik konuları 
 
 ---
 
-## 💻 Bilgisayarınızda Çalıştırma
+##  Bilgisayarınızda Çalıştırma
 
 Projeyi yerel ortamınızda çalıştırmak isterseniz:
 
@@ -74,7 +74,7 @@ Tarayıcınızda `http://127.0.0.1:5000` adresini açarak araçları kullanabili
 
 ---
 
-## 🧪 Testler
+##  Testler
 
 Tüm modüller için yazılmış 20 adet birim testi bulunmaktadır:
 - `test_scanner.py`: Port tarama, servis çözümleme ve TTL tespiti testleri
@@ -84,5 +84,5 @@ Tüm modüller için yazılmış 20 adet birim testi bulunmaktadır:
 
 ---
 
-👨‍💻 **Geliştirici:** Mehmet Emin Yılmaz  
-📄 **Lisans:** MIT
+ **Geliştirici:** Mehmet Emin Yılmaz  
+ **Lisans:** MIT
