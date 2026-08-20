@@ -33,6 +33,13 @@ Siber güvenlik alanında kendimi geliştirirken öğrendiğim teorik konuları 
   * MD5, SHA-1, SHA-256, SHA-512 ve Windows NTLM hash üretimi.
   * Verilen bir hash dizgisini uzunluk ve desen analiziyle otomatik tanıma (Hash Identifier).
 
+### 5. File Integrity Monitor (`/file-integrity`)
+* **Öğrendiklerim:** Sistem dosyası bütünlüğü (FIM), SHA-256 baseline veri tabanı oluşturma, yetkisiz değişiklik ve web shell tespiti.
+* **Özellikler:**
+  * Referans durum ile anlık dosya durumunu kıyaslayan diff motoru.
+  * 4 farklı durum tespiti: `INTACT` (Bütünlük Korundu), `MODIFIED` (Yetkisiz Değişiklik), `CREATED` (Yeni Dosya / Olası Web Shell), `DELETED` (Silinen Dosya).
+  * Web panelinde interaktif saldırı simülasyonları (Temiz Sistem, Web Shell, Yetkisiz Müdahale).
+
 ---
 
 ## 📋 Proje Durumu & Yol Haritası
@@ -41,10 +48,13 @@ Siber güvenlik alanında kendimi geliştirirken öğrendiğim teorik konuları 
 - [x] **Packet Sniffer v1.0** (Raw Socket, Binary Unpacking, Hex/ASCII)
 - [x] **DNS Analyzer v1.0** (Record Resolver, Shannon Entropy Tunneling)
 - [x] **Hash Calculator v1.0** (Kriptografik özetler, Salting, Hash ID)
-- [ ] **File Integrity Monitor (FIM)** (SHA-256 ile dosya değişiklik takibi) — *Sıradaki*
-- [ ] **Password Strength Checker** (Entropi tabanlı parola denetleyici)
+- [x] **File Integrity Monitor (FIM)** (SHA-256 ile dosya değişiklik takibi)
+- [ ] **Password Strength Checker** (Entropi tabanlı parola denetleyici) — *Sıradaki*
 - [ ] **Log Analyzer** (Web & Syslog analizi)
 - [ ] **Threat Intelligence** (API entegrasyonlu tehdit istihbaratı)
+- [ ] **AI SOC Engine** (Anomali tespiti ve tehdit önceliklendirme)
+- [ ] **AI Incident Response** (Otomatik olay müdahale motoru)
+- [ ] **Malware Analyzer** (Statik zararlı yazılım analizi)
 
 ---
 
@@ -76,11 +86,12 @@ Tarayıcınızda `http://127.0.0.1:5000` adresini açarak araçları kullanabili
 
 ##  Testler
 
-Tüm modüller için yazılmış 20 adet birim testi bulunmaktadır:
-- `test_scanner.py`: Port tarama, servis çözümleme ve TTL tespiti testleri
-- `test_sniffer.py`: IP/TCP/UDP/ICMP header binary ayrıştırma testleri
-- `test_dns.py`: Entropi hesabı ve tunneling anomali tespit testleri
-- `test_hash.py`: Hash üretimi, tuzlama ve format tanıma testleri
+Tüm modüller için yazılmış 25 adet birim testi bulunmaktadır:
+- `test_scanner.py`: Port tarama, servis çözümleme ve TTL tespiti testleri (5 test)
+- `test_sniffer.py`: IP/TCP/UDP/ICMP header binary ayrıştırma testleri (6 test)
+- `test_dns.py`: Entropi hesabı ve tunneling anomali tespit testleri (4 test)
+- `test_hash.py`: Hash üretimi, tuzlama ve format tanıma testleri (5 test)
+- `test_fim.py`: SHA-256 baseline, dosya tamper ve anomali simülasyon testleri (5 test)
 
 ---
 

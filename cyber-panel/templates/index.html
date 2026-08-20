@@ -43,16 +43,16 @@
                     <li class="nav-item" data-page="hash-calculator">
                         <a href="#"><i class="fas fa-hashtag"></i> <span>Hash Calculator</span></a>
                     </li>
+                    <li class="nav-item" data-page="file-integrity">
+                        <a href="#"><i class="fas fa-fingerprint"></i> <span>File Integrity</span></a>
+                    </li>
                 </ul>
 
                 <div class="nav-section-title collapsible-trigger" id="toggle-modules-btn">
-                    <span>DİĞER MODÜLLER (7)</span>
+                    <span>DİĞER MODÜLLER (6)</span>
                     <i class="fas fa-chevron-down toggle-arrow"></i>
                 </div>
                 <ul id="modules-collapsible-list" class="collapsible-nav-list">
-                    <li class="nav-item disabled">
-                        <a href="#"><i class="fas fa-fingerprint"></i> <span>File Integrity</span> <span class="badge-upcoming">Yakında</span></a>
-                    </li>
                     <li class="nav-item disabled">
                         <a href="#"><i class="fas fa-key"></i> <span>Password Checker</span> <span class="badge-upcoming">Yakında</span></a>
                     </li>
@@ -283,15 +283,15 @@
                                 </div>
                                 <span class="module-badge badge-active">Canlı</span>
                             </div>
-                            <!-- UPCOMING PROJECTS -->
-                            <div class="module-entry upcoming">
-                                <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-fingerprint"></i></div>
+                            <div class="module-entry active" onclick="switchPage('file-integrity')">
+                                <div class="module-icon-sm" style="background: rgba(247,120,186,0.15); color: #f778ba;"><i class="fas fa-fingerprint"></i></div>
                                 <div class="module-entry-info">
-                                    <span class="module-name">File Integrity Monitor</span>
-                                    <span class="module-desc">SHA-256 hash tabanlı dosya bütünlük ve değişiklik tespiti</span>
+                                    <span class="module-name">File Integrity Monitor <code>v1.0</code></span>
+                                    <span class="module-desc">SHA-256 Baseline Karşılaştırması · Yetkisiz Değişiklik &amp; Web Shell Tespiti</span>
                                 </div>
-                                <span class="module-badge badge-upcoming">Yakında</span>
+                                <span class="module-badge badge-active">Canlı</span>
                             </div>
+                            <!-- UPCOMING PROJECTS -->
                             <div class="module-entry upcoming">
                                 <div class="module-icon-sm" style="background: rgba(139,148,158,0.1); color: #8b949e;"><i class="fas fa-key"></i></div>
                                 <div class="module-entry-info">
@@ -390,17 +390,24 @@
                                             <span>Kriptografik hash, salting, hash identifier</span>
                                         </div>
                                     </div>
+                                    <div class="roadmap-item done">
+                                        <i class="fas fa-check-circle"></i>
+                                        <div>
+                                            <strong>File Integrity Monitor v1.0</strong>
+                                            <span>SHA-256 baseline, yetkisiz değişiklik &amp; web shell tespiti</span>
+                                        </div>
+                                    </div>
                                     <div class="roadmap-item active-road">
                                         <i class="fas fa-code"></i>
                                         <div>
-                                            <strong>File Integrity Monitor (FIM)</strong>
-                                            <span>Sıradaki — SHA-256 tabanlı bütünlük kontrolü</span>
+                                            <strong>Password Strength Checker</strong>
+                                            <span>Sıradaki — Entropi tabanlı parola denetimi</span>
                                         </div>
                                     </div>
                                     <div class="roadmap-item pending">
                                         <i class="far fa-circle"></i>
                                         <div>
-                                            <strong>Password Strength, Log Analyzer, Threat Intel…</strong>
+                                            <strong>Log Analyzer, Threat Intel, AI SOC Engine…</strong>
                                             <span>Planlandı</span>
                                         </div>
                                     </div>
@@ -422,6 +429,13 @@
                                 <span class="card-sub">Proje geliştirme ve öğrenme zamançizelgesi</span>
                             </div>
                             <div class="activity-feed">
+                                <div class="activity-item">
+                                    <div class="activity-dot dot-green"></div>
+                                    <div class="activity-content">
+                                        <span class="activity-title">File Integrity Monitor v1.0 yayınlandı</span>
+                                        <span class="activity-time">20 Ağu 2026 · Modül 5: Baseline ve dosya bütünlük kontrolü</span>
+                                    </div>
+                                </div>
                                 <div class="activity-item">
                                     <div class="activity-dot dot-green"></div>
                                     <div class="activity-content">
@@ -883,6 +897,106 @@
                         </div>
                     </div>
                 </div>
+            <!-- PAGE: FILE INTEGRITY MONITOR -->
+            <div id="page-file-integrity" class="page-content hidden">
+
+                <!-- LEARNING CONCEPT CARD -->
+                <div class="learning-card">
+                    <div class="learning-card-header">
+                        <div class="learning-badge"><i class="fas fa-graduation-cap"></i> Öğrenilen Konsept</div>
+                        <span class="learning-tag">Proje #5</span>
+                    </div>
+                    <div class="learning-content">
+                        <div class="learning-col">
+                            <h4><i class="fas fa-book-open"></i> Siber Güvenlik Teorisi</h4>
+                            <p><strong>File Integrity Monitoring (FIM):</strong> Kritik sistem dosyalarının (ör. <code>/etc/passwd</code>, <code>nginx.conf</code>, web kök dizini) yetkisiz değişikliklere karşı kriptografik SHA-256 özetleri ile periyodik olarak denetlenmesidir.</p>
+                            <p><strong>Baseline (Temel Çizgi):</strong> Sistemin bilinen temiz ve güvenli anındaki tüm dosya hash'lerinin referans veri tabanına kaydedilmesidir.</p>
+                            <p><strong>Saldırı Vektörleri Tespiti:</strong> Bir saldırgan sisteme sızdığında konfigürasyonları değiştirir (MODIFIED), web shell bırakır (CREATED) veya logları siler (DELETED). FIM tüm bu adımları anında yakalar.</p>
+                        </div>
+                        <div class="learning-col">
+                            <h4><i class="fas fa-code"></i> Nasıl Kodladım?</h4>
+                            <p>Python <code>hashlib.sha256</code> ile 64KB bloklar halinde dosya hash'i çıkarıldı. <code>set(baseline.keys()).union(current.keys())</code> ile diff algoritması kurularak dosyalar 4 farklı güvenlik durumuna (INTACT, MODIFIED, CREATED, DELETED) sınıflandırıldı.</p>
+                            <div class="tech-stack-row">
+                                <span class="tech-badge" style="--c:#f778ba">SHA-256 Baseline</span>
+                                <span class="tech-badge" style="--c:#3fb950">Diff Algoritması</span>
+                                <span class="tech-badge" style="--c:#58a6ff">Web Shell Tespiti</span>
+                                <span class="tech-badge" style="--c:#d29922">SOC Uyarı Motoru</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FIM INTERACTIVE DASHBOARD -->
+                <div class="card" style="margin-bottom: 1.25rem;">
+                    <div class="card-header flex-between">
+                        <div>
+                            <h3><i class="fas fa-fingerprint"></i> İnteraktif Bütünlük Denetleyicisi &amp; Simülatör</h3>
+                            <span class="card-sub">Bir senaryo seçin veya sistemi anlık olarak tarayın</span>
+                        </div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">
+                            Son Tarama: <strong id="fim-last-time" style="color: var(--accent-blue);">Canlı</strong>
+                        </div>
+                    </div>
+
+                    <!-- SCENARIO SELECTOR BUTTONS -->
+                    <div style="padding: 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; border-bottom: 1px solid var(--border-subtle);">
+                        <button class="btn-filter active" id="btn-fim-tamper" onclick="runFimScenario('tamper')">
+                            <i class="fas fa-triangle-exclamation"></i> Yetkisiz Müdahale Senaryosu
+                        </button>
+                        <button class="btn-filter" id="btn-fim-webshell" onclick="runFimScenario('webshell')">
+                            <i class="fas fa-bug"></i> Web Shell Enjeksiyonu
+                        </button>
+                        <button class="btn-filter" id="btn-fim-clean" onclick="runFimScenario('clean')">
+                            <i class="fas fa-shield-check"></i> Temiz Sistem (Güvenli)
+                        </button>
+                    </div>
+
+                    <!-- FIM STATS KPI -->
+                    <div style="padding: 1.25rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                        <div class="stat-card" style="padding: 0.85rem 1rem;">
+                            <div class="stat-body">
+                                <h3>Toplam Dosya</h3>
+                                <p id="fim-stat-total" class="stat-number" style="font-size: 1.3rem;">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="padding: 0.85rem 1rem;">
+                            <div class="stat-body">
+                                <h3>Bütünlük Korundu</h3>
+                                <p id="fim-stat-intact" class="stat-number text-emerald" style="font-size: 1.3rem;">3</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="padding: 0.85rem 1rem;">
+                            <div class="stat-body">
+                                <h3>Değiştirilen (Kritik)</h3>
+                                <p id="fim-stat-modified" class="stat-number" style="font-size: 1.3rem; color: #f85149;">1</p>
+                            </div>
+                        </div>
+                        <div class="stat-card" style="padding: 0.85rem 1rem;">
+                            <div class="stat-body">
+                                <h3>Yeni / Silinen</h3>
+                                <p id="fim-stat-anomaly" class="stat-number" style="font-size: 1.3rem; color: #d29922;">2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIM RESULTS TABLE -->
+                    <div class="table-container" style="border-top: 1px solid var(--border-subtle);">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>DOSYA YOLU</th>
+                                    <th>DURUM</th>
+                                    <th>REFERANS SHA-256</th>
+                                    <th>GÜNCEL SHA-256</th>
+                                    <th>SOC ANALİST BİLGİSİ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="fim-results-body">
+                                <!-- Dynamic rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <!-- PACKET INSPECTOR MODAL -->
@@ -979,10 +1093,63 @@
                 'port-scanner': 'Port Tarayıcı Pro',
                 'packet-sniffer': 'Canlı Paket Dinleyicisi (Packet Sniffer)',
                 'dns-analyzer': 'DNS Sorgu & Anomali Analizörü (DNS Analyzer)',
-                'hash-calculator': 'Kriptografik Hash & Identifier (Hash Calculator)'
+                'hash-calculator': 'Kriptografik Hash & Identifier (Hash Calculator)',
+                'file-integrity': 'Dosya Bütünlük Takibi & FIM (File Integrity Monitor)'
             };
             document.getElementById('current-page').innerText = pageTitles[pageId] || pageId.toUpperCase();
         }
+
+        // --- FILE INTEGRITY MONITOR (FIM) LOGIC ---
+        async function runFimScenario(scenario = 'tamper') {
+            document.querySelectorAll('#page-file-integrity .btn-filter').forEach(b => b.classList.remove('active'));
+            const btn = document.getElementById(`btn-fim-${scenario}`);
+            if (btn) btn.classList.add('active');
+
+            try {
+                const response = await fetch('/api/fim/simulate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ scenario })
+                });
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    document.getElementById('fim-stat-total').innerText = data.total_files;
+                    document.getElementById('fim-stat-intact').innerText = data.intact_count;
+                    document.getElementById('fim-stat-modified').innerText = data.modified_count;
+                    document.getElementById('fim-stat-anomaly').innerText = data.created_count + data.deleted_count;
+                    document.getElementById('fim-last-time').innerText = data.timestamp;
+
+                    const body = document.getElementById('fim-results-body');
+                    body.innerHTML = '';
+
+                    data.results.forEach(res => {
+                        const baseHashDisplay = res.baseline_hash !== '-' ? `${res.baseline_hash.substring(0, 16)}...` : '-';
+                        const currHashDisplay = res.current_hash !== '-' ? `${res.current_hash.substring(0, 16)}...` : '-';
+                        const row = `
+                            <tr>
+                                <td>
+                                    <strong style="color:var(--text-heading); font-size:0.88rem;">${res.file}</strong>
+                                    <span style="display:block; font-size:0.75rem; color:var(--text-muted);">${res.size}</span>
+                                </td>
+                                <td>
+                                    <span class="module-badge ${res.badge_class}">
+                                        <i class="${res.icon}"></i> ${res.status_title}
+                                    </span>
+                                </td>
+                                <td><code style="font-size:0.78rem;" title="${res.baseline_hash}">${baseHashDisplay}</code></td>
+                                <td><code style="font-size:0.78rem;" title="${res.current_hash}">${currHashDisplay}</code></td>
+                                <td style="font-size:0.82rem; color:var(--text-body);">${res.detail}</td>
+                            </tr>
+                        `;
+                        body.innerHTML += row;
+                    });
+                }
+            } catch (err) {
+                console.error("FIM simulation error:", err);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => runFimScenario('tamper'));
 
         // --- HASH CALCULATOR LOGIC ---
         const hashGenBtn = document.getElementById('hash-generate-btn');

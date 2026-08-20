@@ -12,10 +12,12 @@ sys.path.extend([
     os.path.abspath(os.path.join(BASE_DIR, '..', 'packet-sniffer')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'dns-analyzer')),
     os.path.abspath(os.path.join(BASE_DIR, '..', 'hash-calculator')),
+    os.path.abspath(os.path.join(BASE_DIR, '..', 'file-integrity-monitor')),
     os.path.abspath(os.path.join(BASE_DIR, 'port-scanner')),
     os.path.abspath(os.path.join(BASE_DIR, 'packet-sniffer')),
     os.path.abspath(os.path.join(BASE_DIR, 'dns-analyzer')),
     os.path.abspath(os.path.join(BASE_DIR, 'hash-calculator')),
+    os.path.abspath(os.path.join(BASE_DIR, 'file-integrity-monitor')),
 ])
 
 try:
@@ -41,6 +43,13 @@ except ImportError:
     def generate_all_hashes(text, salt=""): return {"hashes": {}}
     def identify_hash_type(hash_str): return {"status": "error", "message": "Modül yüklenemedi"}
     def verify_hash_match(text, target_hash, salt=""): return {"is_match": False}
+
+try:
+    from fim import compare_file_records, get_demo_simulation, calculate_string_hash
+except ImportError:
+    def compare_file_records(b, c): return {"status": "error", "results": []}
+    def get_demo_simulation(s="tamper"): return {"status": "error", "results": []}
+    def calculate_string_hash(t, a="sha256"): return ""
 
 app = Flask(__name__)
 
@@ -94,7 +103,26 @@ def dns_analyzer():
 def hash_calculator():
     return render_template('index.html', active_page='hash-calculator')
 
+@app.route('/file-integrity')
+def file_integrity():
+    return render_template('index.html', active_page='file-integrity')
+
 # --- API ENDPOINTS ---
+@app.route('/api/fim/simulate', methods=['POST'])
+def api_fim_simulate():
+    data = request.json or {}
+    scenario = data.get('scenario', 'tamper')
+    result = get_demo_simulation(scenario)
+    return jsonify(result)
+
+@app.route('/api/fim/check', methods=['POST'])
+def api_fim_check():
+    data = request.json or {}
+    baseline = data.get('baseline', {})
+    current = data.get('current', {})
+    result = compare_file_records(baseline, current)
+    return jsonify(result)
+
 @app.route('/api/hash/generate', methods=['POST'])
 def api_hash_generate():
     data = request.json or {}
